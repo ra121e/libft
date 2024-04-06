@@ -64,7 +64,7 @@ int main(int ac, char *av[])
 	org_alp = ft_isalnum(alp);
 	printf("value returned from my ft_isalnum as a: %d\n", org_alp);
 	dig = '6';
-	org_dig = isalnum(dig);
+	org_dig = ft_isalnum(dig);
 	printf("value returned from my ft_isalnum as digit 6: %d\n", org_dig);
 
 	return (0);
