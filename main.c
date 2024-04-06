@@ -5,6 +5,7 @@ int ft_strlen(char *str);
 int ft_isalpha(char c);
 int ft_isdigit(char c);
 int	ft_isalnum(unsigned char c);
+int	ft_isascii(char c);
 
 int main(int ac, char *av[])
 {
@@ -67,8 +68,25 @@ int main(int ac, char *av[])
 	org_dig = ft_isalnum(dig);
 	printf("value returned from my ft_isalnum as digit 6: %d\n", org_dig);
 
+// test of original isascii()
+	alp = 0;
+	org_alp = isascii(alp);
+	printf("value returned from isascii as A: %d\n", org_alp);
+	alp = 127;
+	org_alp = isascii(alp);
+	printf("value returned from isascii as a: %d\n", org_alp);
+	dig = 128;
+	org_dig = isascii(dig);
+	printf("value returned from isascii as digit 6: %d\n", org_dig);
+// test of my ft_isascii()
+	alp = 0;
+	org_alp = ft_isascii(alp);
+	printf("value returned from ft_isascii as A: %d\n", org_alp);
+	alp = 127;
+	org_alp = ft_isascii(alp);
+	printf("value returned from ft_isascii as a: %d\n", org_alp);
+	dig = 128;
+	org_dig = ft_isascii(dig);
+	printf("value returned from ft_isascii as digit 6: %d\n", org_dig);
 	return (0);
-
-
-
 }
