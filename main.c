@@ -8,6 +8,7 @@ int	ft_isalnum(unsigned char c);
 int	ft_isascii(char c);
 int	ft_isprint(char c);
 int ft_toupper(int c);
+int ft_tolower(int C);
 
 int main(int ac, char *av[])
 {
@@ -111,24 +112,44 @@ int main(int ac, char *av[])
 	org_dig = ft_isprint(dig);
 	printf("value returned from my ft_isprint as digit 6: %d\n", org_dig);
 // test of original toupper()
-	alp = 38;
+	alp = 'a';
 	org_alp = toupper(alp);
 	printf("value returned from toupper as A: %c\n", org_alp);
-	alp = 97;
+	alp = 'A';
 	org_alp = toupper(alp);
 	printf("value returned from toupper as a: %c\n", org_alp);
-	dig = 127;
+	dig = '8';
 	org_dig = toupper(dig);
 	printf("value returned from toupper as digit 6: %c\n", org_dig);
 // test of my ft_toupper()
-	alp = 38;
+	alp = 'a';
 	org_alp = ft_toupper(alp);
 	printf("value returned from ft_toupper as A: %c\n", org_alp);
-	alp = 97;
+	alp = 'A';
 	org_alp = ft_toupper(alp);
 	printf("value returned from ft_toupper as a: %c\n", org_alp);
-	dig = 127;
+	dig = '8';
 	org_dig = ft_toupper(dig);
 	printf("value returned from ft_toupper as digit 6: %c\n", org_dig);
+// test of original tolower()
+	alp = 'A';
+	org_alp = tolower(alp);
+	printf("value returned from tolower as A: %c\n", org_alp);
+	alp = 'a';
+	org_alp = tolower(alp);
+	printf("value returned from tolower as a: %c\n", org_alp);
+	dig = '8';
+	org_dig = tolower(dig);
+	printf("value returned from tolower as digit 6: %c\n", org_dig);
+// test of my ft_tolower()
+	alp = 'A';
+	org_alp = ft_tolower(alp);
+	printf("value returned from ft_tolower as A: %c\n", org_alp);
+	alp = 'a';
+	org_alp = ft_tolower(alp);
+	printf("value returned from ft_tolower as a: %c\n", org_alp);
+	dig = '8';
+	org_dig = ft_tolower(dig);
+	printf("value returned from ft_tolower as digit 6: %c\n", org_dig);
 	return (0);
 }
