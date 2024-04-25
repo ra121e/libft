@@ -1,0 +1,2 @@
+libft.a:main.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_strlen.o ft_tolower.o ft_toupper.o
+		cc -o libft.a main.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_strlen.o ft_tolower.o ft_toupper.o
