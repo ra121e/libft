@@ -11,11 +11,13 @@ size_t ft_strlen(const char *s)
 }
 
 #include <stdio.h>
+#include <string.h>
 
 int	main(void)
 {
 	char	a[20] = "length test";
 
 	printf("return value from ft_strlen %d\n", ft_strlen(a));
+	printf("return value from original strlen %d\n", strlen(a));
 	return (0);
 }
