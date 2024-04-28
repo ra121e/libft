@@ -1,3 +1,7 @@
 #ifndef LIBFT_H
+# define LIBFT_H
 # include <unistd.h>
-#endif
+# include <stdio.h>
+
+size_t	strlen(const char *s);
+#endif // LIBFT_H
