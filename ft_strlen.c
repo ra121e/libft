@@ -17,7 +17,7 @@ int	main(void)
 {
 	char	a[20] = "length test";
 
-	printf("return value from ft_strlen %d\n", ft_strlen(a));
-	printf("return value from original strlen %d\n", strlen(a));
+	printf("return value from ft_strlen %ld\n", ft_strlen(a));
+	printf("return value from original strlen %ld\n", strlen(a));
 	return (0);
 }
