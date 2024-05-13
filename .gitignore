@@ -1,3 +1,5 @@
 *.pdf
 desktop.ini
 *.exe
+a.out
+libft.h.gch
