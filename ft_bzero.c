@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:31:59 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/14 12:58:59 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/14 14:22:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int	i;
-	char *ptr;
+	size_t	i;
+	char	*ptr;
 
 	if (n == 0)
-		return;
+		return ;
 	ptr = (char *)s;
 	i = 0;
 	while (i < n)
@@ -33,7 +33,7 @@ void	ft_bzero(void *s, size_t n)
 
 int	main(void)
 {
-	int a;
+	int		a;
 	size_t	i;
 	char	str[] = "ThisisString";
 
