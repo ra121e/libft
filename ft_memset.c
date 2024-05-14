@@ -6,10 +6,9 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:10:44 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/14 15:50:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/14 16:05:56 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdio.h>
 
@@ -46,17 +45,18 @@ int	main(void)
 	i = 0;
 	printf("%s\n", str);
 	p = (char *)ft_memset(str, a, n);
-
 	while (i <= 12)
 	{
-		printf("%c\n", str[i]);
+		printf("%c ", str[i]);
 		i++;
 	}
+	printf("\n");
 	i = 0;
 	while (i <= 12)
 	{
-		printf("%d\n", p[i]);
+		printf("%d ", p[i]);
 		i++;
 	}
+	printf("\n");
 	return (0);
 }
