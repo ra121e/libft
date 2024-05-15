@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:34 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/15 21:41:35 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/16 00:34:13 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*strchr(const char *s, int c);
 char	*strrchr(const char *s, int c);
+char	*ft_strnstr(const char *big, const char *little, size_t len)
+
 #endif // LIBFT_H
