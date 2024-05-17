@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:41:49 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 19:36:39 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 19:57:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 	strncmp compare two strings the first n bytes.
 */
 
-
 #include "libft.h"
-
 
 /*
 	s1 is char pointer which to have string
