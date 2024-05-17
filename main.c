@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 21:07:14 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:26:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,24 @@ int	main(void)
 	printf("---------------------------------------------------\n");
 
 	// ft_strlcpy test
-	int		slcn;
+	size_t	slcn;
 	char	slcstr1[] = "ABCDEFG";
 	char	slcstr2[] = "ABCD";
 
 	printf("dst: %s\n", slcstr1);
 	printf("src: %s\n", slcstr2);
-	scn = 2;
-	printf("case n = %d\n", slcn);
-	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
-	scn = 5;
-	printf("case n = %d\n", slcn);
-	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
-	scn = 9;
-	printf("case n = %d\n", slcn);
-	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
+	slcn = 2;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	slcn = 5;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	slcn = 9;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
 	printf("---------------------------------------------------\n");
 	return (0);
 }
