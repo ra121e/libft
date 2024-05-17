@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 11:16:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 13:28:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 int	main(void)
 {
+	// ft_strlen test
 	char	sla[19] = "length test";
 
 	printf("return value from ft_strlen %ld\n", ft_strlen(sla));
 	printf("return value from original strlen %ld\n", strlen(sla));
 
+	// ft_bzero test
 	int		bza;
 	size_t	bzi;
 	char	bzstr[] = "ThisisString";
