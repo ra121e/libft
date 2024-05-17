@@ -3,3 +3,4 @@ desktop.ini
 *.exe
 a.out
 libft.h.gch
+main_copy.c
