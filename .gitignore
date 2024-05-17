@@ -4,3 +4,5 @@ desktop.ini
 a.out
 libft.h.gch
 main_copy.c
+*.o
+*.a
