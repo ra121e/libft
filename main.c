@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 21:26:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:32:27 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(void)
 	slcn = 2;
 	printf("case n = %zu\n", slcn);
 	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("dst after ft_: %s\n", slcstr1)
 	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
 	slcn = 5;
 	printf("case n = %zu\n", slcn);
