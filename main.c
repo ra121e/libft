@@ -6,14 +6,17 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 14:23:26 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 19:37:48 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <assert.h>
 #include "libft.h"
+
+
 
 int	main(void)
 {
@@ -37,5 +40,26 @@ int	main(void)
 		printf("%c\n", bzstr[bzi]);
 		bzi++;
 	}
+
+	// ft_strncmp test
+	int		scn;
+	char	scstr1[] = "ABCDEFG";
+	char	scstr2[] = "ABCD";
+
+	printf("s1: %s\n", scstr1);
+	printf("s2: %s\n", scstr2);
+	scn = 2;
+	printf("case n = %d\n", scn);
+	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
+	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
+	scn = 5;
+	printf("case n = %d\n", scn);
+	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
+	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
+	scn = 9;
+	printf("case n = %d\n", scn);
+	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
+	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
+	printf("---------------------------------------------------\n");
 	return (0);
 }
