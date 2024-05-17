@@ -6,9 +6,11 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:26:24 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 16:53:19 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 16:58:59 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalnum(unsigned char c)
 {
