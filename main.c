@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 19:37:48 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/17 21:07:14 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <assert.h>
+#include <bsd/string.h>
 #include "libft.h"
 
 
@@ -60,6 +61,27 @@ int	main(void)
 	printf("case n = %d\n", scn);
 	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
 	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
+	printf("---------------------------------------------------\n");
+
+	// ft_strlcpy test
+	int		slcn;
+	char	slcstr1[] = "ABCDEFG";
+	char	slcstr2[] = "ABCD";
+
+	printf("dst: %s\n", slcstr1);
+	printf("src: %s\n", slcstr2);
+	scn = 2;
+	printf("case n = %d\n", slcn);
+	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
+	scn = 5;
+	printf("case n = %d\n", slcn);
+	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
+	scn = 9;
+	printf("case n = %d\n", slcn);
+	printf("result of ft_ :%d\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%d\n", strlcpy(slcstr1, slcstr2, slcn));
 	printf("---------------------------------------------------\n");
 	return (0);
 }
