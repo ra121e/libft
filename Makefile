@@ -6,13 +6,13 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/18 15:57:30 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/18 18:23:28 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCS	=	ft_strlen.c ft_bzero.c ft_strncmp.c
+SRCS	=	ft_strlen.c ft_bzero.c ft_strncmp.c ft_strlcpy.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
