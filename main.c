@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 21:32:27 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/18 15:59:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <ctype.h>
 #include <string.h>
 #include <assert.h>
-#include <bsd/string.h>
 #include "libft.h"
 
 
