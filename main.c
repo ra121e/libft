@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/18 20:43:27 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/19 19:41:06 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,42 @@
 #include <bsd/string.h>
 #include "libft.h"
 
-int	main(void)
+void	t_isdigit(void)
+{
+
+}
+
+
+void	t_isalpha(void)
+{
+
+}
+
+void		t_isalnum(void)
+{
+
+}
+
+void		t_isascii(void)
+{
+
+}
+void		t_isprint(void)
+{
+
+}
+
+void	t_strlen(void)
 {
 	// ft_strlen test
 	char	sla[19] = "length test";
 
 	printf("return value from ft_strlen %ld\n", ft_strlen(sla));
 	printf("return value from original strlen %ld\n", strlen(sla));
+}
 
+void	t_bzero(void)
+{
 	// ft_bzero test
 	int		bza;
 	size_t	bzi;
@@ -41,6 +69,46 @@ int	main(void)
 		bzi++;
 	}
 
+
+}
+void	t_memset(void)
+{
+
+}
+void	t_memcpy(void)
+{
+
+}
+void	t_memmove(void)
+{
+
+}
+
+void	t_memchr(void)
+{
+
+}
+void	t_memcmp(void)
+{
+
+}
+void	t_strchr(void)
+{
+
+}
+
+void	t_strrchr(void)
+{
+
+}
+
+void	t_strnstr(void)
+{
+
+}
+
+void	t_strncmp(void)
+{
 	// ft_strncmp test
 	int		scn;
 	char	scstr1[] = "ABCDEFG";
@@ -62,6 +130,35 @@ int	main(void)
 	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
 	printf("---------------------------------------------------\n");
 
+}
+
+void	t_strlcpy(void)
+{
+	// ft_strlcpy test
+	size_t	slcn;
+	char	slcstr1[] = "ABCDEFG";
+	char	slcstr2[] = "ABCD";
+
+	printf("dst: %s\n", slcstr1);
+	printf("src: %s\n", slcstr2);
+	slcn = 2;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("dst after ft_: %s\n", slcstr1);
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	slcn = 5;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	slcn = 9;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	printf("---------------------------------------------------\n");
+}
+
+void	t_atoi(void)
+{
 	// ft_atoi test
 
 	char	atoistr[] = "    +42";
@@ -94,27 +191,36 @@ int	main(void)
 	printf("ft_ get %s return %d\n", atoistr9, ft_atoi(atoistr9));
 	printf("origina get %s return %d\n", atoistr9, atoi(atoistr9));
 	printf("---------------------------------------------------\n");
+}
 
-	// ft_strlcpy test
-	size_t	slcn;
-	char	slcstr1[] = "ABCDEFG";
-	char	slcstr2[] = "ABCD";
+void	t_calloc(void)
+{
 
-	printf("dst: %s\n", slcstr1);
-	printf("src: %s\n", slcstr2);
-	slcn = 2;
-	printf("case n = %zu\n", slcn);
-	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("dst after ft_: %s\n", slcstr1);
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
-	slcn = 5;
-	printf("case n = %zu\n", slcn);
-	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
-	slcn = 9;
-	printf("case n = %zu\n", slcn);
-	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
-	printf("---------------------------------------------------\n");
+}
+
+
+int	main(void)
+{
+
+//t_isdigit();
+//t_isalpha();
+//t_isalnum();
+//t_isascii();
+//t_isprint();
+//t_strlen();
+t_bzero();
+//t_memset();
+//t_memcpy();
+//t_memmove();
+//t_memchr();
+//t_memcmp();
+//t_strchr();
+//t_strrchr();
+//t_strnstr();
+//t_strncmp();
+//t_strlcpy();
+//t_atoi();
+//t_calloc();
+
 	return (0);
 }
