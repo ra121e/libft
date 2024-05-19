@@ -6,14 +6,18 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/19 12:44:18 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/19 12:49:00 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-SRCS	=	ft_strlen.c ft_bzero.c ft_strncmp.c ft_strlcpy.c \
-			ft_atoi.c ft_isdigit.c ft_calloc.c
+SRCS	=	ft_isdigit.c \
+			ft_strlen.c \
+			ft_bzero.c \
+			ft_strncmp.c ft_strlcpy.c \
+			ft_atoi.c \
+			ft_calloc.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
