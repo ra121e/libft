@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 11:12:53 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 14:02:23 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,52 @@ void	t_strlcpy(void)
 	printf("---------------------------------------------------\n");
 }
 
+void run_strlcat_test(const char *dst_input, const char *src_input, size_t size) {
+    char buffer_strlcat[256];
+    char buffer_ft_strlcat[256];
+
+    // strlcat を実行
+    strncpy(buffer_strlcat, dst_input, sizeof(buffer_strlcat));
+    size_t result_strlcat = strlcat(buffer_strlcat, src_input, size);
+
+    // ft_strlcat を実行
+    strncpy(buffer_ft_strlcat, dst_input, sizeof(buffer_ft_strlcat));
+    size_t result_ft_strlcat = ft_strlcat(buffer_ft_strlcat, src_input, size);
+
+    // 結果を出力
+    printf("Input: dst=\"%s\", src=\"%s\", size=%zu\n", dst_input, src_input, size);
+    printf("Expected (strlcat): result=%zu, dst=\"%s\"\n", result_strlcat, buffer_strlcat);
+    printf("Actual (ft_strlcat): result=%zu, dst=\"%s\"\n", result_ft_strlcat, buffer_ft_strlcat);
+
+    // 結果の比較
+    if (result_strlcat == result_ft_strlcat && strcmp(buffer_strlcat, buffer_ft_strlcat) == 0) {
+        printf("Result: PASS\n\n");
+    } else {
+        printf("Result: FAIL\n\n");
+    }
+}
+
+void	t_strlcat(void)
+{
+
+    printf("Prototyping:\nsize_t strlcat(char *dst, const char *src, size_t size);\n\n");
+
+    // テストケースを定義
+    run_strlcat_test("Hello", " World", 11);
+    run_strlcat_test("Hello", " World", 10);
+    run_strlcat_test("Hello", " World", 5);
+    run_strlcat_test("Hello", " World", 6);
+    run_strlcat_test("", " World", 6);
+    run_strlcat_test("", " World", 1);
+    run_strlcat_test("Hello", "", 11);
+    run_strlcat_test("Hello", "", 5);
+    run_strlcat_test("HelloHelloHello", " World", 20);
+    run_strlcat_test("HelloHelloHello", " World", 25);
+
+
+}
+
+
 void	t_atoi(void)
 {
 	// ft_atoi test
@@ -255,7 +301,7 @@ int	main(void)
 //t_isascii();
 //t_isprint();
 //t_strlen();
-t_bzero();
+//t_bzero();
 //t_memset();
 //t_memcpy();
 //t_memmove();
@@ -266,6 +312,7 @@ t_bzero();
 //t_strnstr();
 //t_strncmp();
 //t_strlcpy();
+t_strlcat();
 //t_atoi();
 //t_calloc();
 
