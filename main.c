@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 14:02:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 16:03:15 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,17 +235,16 @@ void	t_strlcat(void)
     printf("Prototyping:\nsize_t strlcat(char *dst, const char *src, size_t size);\n\n");
 
     // テストケースを定義
-    run_strlcat_test("Hello", " World", 11);
-    run_strlcat_test("Hello", " World", 10);
-    run_strlcat_test("Hello", " World", 5);
-    run_strlcat_test("Hello", " World", 6);
-    run_strlcat_test("", " World", 6);
-    run_strlcat_test("", " World", 1);
+    run_strlcat_test("Hello", "World", 11);
+    run_strlcat_test("Hello", "World", 10);
+    run_strlcat_test("Hello", "World", 5);
+    run_strlcat_test("Hello", "World", 6);
+    run_strlcat_test("", "World", 6);
+    run_strlcat_test("", "World", 1);
     run_strlcat_test("Hello", "", 11);
     run_strlcat_test("Hello", "", 5);
-    run_strlcat_test("HelloHelloHello", " World", 20);
-    run_strlcat_test("HelloHelloHello", " World", 25);
-
+    run_strlcat_test("HelloHelloHello", "World", 20);
+    run_strlcat_test("HelloHelloHello", "World", 2);
 
 }
 
