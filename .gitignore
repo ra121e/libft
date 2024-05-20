@@ -7,3 +7,4 @@ main_copy.c
 *.o
 *.a
 *.s
+test
