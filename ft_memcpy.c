@@ -6,11 +6,25 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:33:18 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/15 14:21:59 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 20:33:55 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_memcpy.c
+ * @brief copy from memry to memry
+*/
+
 #include <stdio.h>
+
+/**
+ * @fn void *ft_memcpy(void *dest, const void *src, size_t n)
+ * @brief defferent to ft_strcpy, memcpy can copy anything
+ * @param[in, out] dest cast to char type to step by 1 byte
+ * @param[in] src cast to const char type to step by 1 byte
+ * @param[in] n total size of copy
+ * @note To receive any type of pointer, parameter is void type
+*/
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -27,34 +41,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (dest);
-}
-
-
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	int		i;
-	char	strsrc[] = "AAAA";
-	char	strdest[] = "123456789";
-	char	strdest2[] = "xx";
-	int		intdest[] = {1, 2, 3, 4, 5};
-
-	printf("src string: %s\n", strsrc);
-	printf("dest string: %s\n", strdest);
-	printf("dest2 string: %s\n", strdest2);
-	i = 0;
-	while (i < 5)
-	{
-		printf("%d ", (intdest[i]));
-		i++;
-	}
-	printf("\n");
-	ft_memcpy(strdest, strsrc, 3);
-	printf("dest string: %s\n", strdest);
-	ft_memcpy(strdest2, strsrc, 3);
-	printf("dest2 string: %s\n", strdest2);
-
-	return (0);
 }
