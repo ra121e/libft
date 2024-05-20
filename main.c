@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 16:03:15 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 16:52:47 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,44 @@ void	t_calloc(void)
 }
 
 
+void run_strdup_test(const char *input) {
+    char *result_strdup = strdup(input);
+    char *result_ft_strdup = ft_strdup(input);
+
+    printf("Input: \"%s\"\n", input);
+    printf("Expected (strdup): \"%s\", Address: %p\n", result_strdup, (void *)result_strdup);
+    printf("Actual (ft_strdup): \"%s\", Address: %p\n", result_ft_strdup, (void *)result_ft_strdup);
+
+    if (result_strdup != NULL && result_ft_strdup != NULL && strcmp(result_strdup, result_ft_strdup) == 0) {
+        printf("Result: PASS\n\n");
+    } else {
+        printf("Result: FAIL\n\n");
+    }
+
+    free(result_strdup);
+    free(result_ft_strdup);
+}
+
+
+void	t_strdup(void)
+{
+
+    printf("Prototyping:\nchar *strdup(const char *s);\n\n");
+
+    // テストケースを定義
+    run_strdup_test("Hello, World!");
+    run_strdup_test("Test string with spaces.");
+    run_strdup_test("");
+    run_strdup_test("A");
+    run_strdup_test("Another example string.");
+    run_strdup_test("1234567890");
+    run_strdup_test("Special characters !@#$%^&*()");
+    run_strdup_test("This is a longer string used for testing purposes.");
+    run_strdup_test("String with\ttabs and\nnewlines");
+    run_strdup_test("End with null character\0hidden text");
+
+}
+
 int	main(void)
 {
 
@@ -311,9 +349,10 @@ int	main(void)
 //t_strnstr();
 //t_strncmp();
 //t_strlcpy();
-t_strlcat();
+//t_strlcat();
 //t_atoi();
 //t_calloc();
+t_strdup();
 
 	return (0);
 }
