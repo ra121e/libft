@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 16:52:47 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 19:59:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,37 @@ void	t_isalpha(void)
 
 }
 
+// テストケースを実行する関数
+void run_isalnum_test(int c) {
+    int result_isalnum = isalnum(c);
+    int result_ft_isalnum = ft_isalnum(c);
+
+    printf("Input: '%c' (ASCII: %d)\n", c, c);
+    printf("Expected (isalnum): %d\n", result_isalnum);
+    printf("Actual (ft_isalnum): %d\n", result_ft_isalnum);
+
+    if (result_isalnum == result_ft_isalnum) {
+        printf("Result: PASS\n\n");
+    } else {
+        printf("Result: FAIL\n\n");
+    }
+}
+
 void		t_isalnum(void)
 {
+    printf("Prototyping:\nint isalnum(int c);\n\n");
+
+    // テストケースを定義
+    run_isalnum_test('a');  // Alphabetic character
+    run_isalnum_test('Z');  // Alphabetic character
+    run_isalnum_test('5');  // Numeric character
+    run_isalnum_test(' ');  // Space (non-alphanumeric)
+    run_isalnum_test('$');  // Special character (non-alphanumeric)
+    run_isalnum_test('0');  // Numeric character
+    run_isalnum_test('9');  // Numeric character
+    run_isalnum_test('A');  // Alphabetic character
+    run_isalnum_test('z');  // Alphabetic character
+    run_isalnum_test('@');  // Special character (non-alphanumeric)
 
 }
 
@@ -122,8 +151,47 @@ void	t_memset(void)
 {
 
 }
+
+// テストケースを実行する関数
+void run_memcpy_test(const char *test_name, const char *src, size_t n) {
+    char dest1[100] = {0};
+    char dest2[100] = {0};
+
+    // オリジナル関数の結果
+    memcpy(dest1, src, n);
+
+    // 自作関数の結果
+    ft_memcpy(dest2, src, n);
+
+    // 結果を出力
+    printf("Test Case: %s\n", test_name);
+    printf("Input src: \"%s\", n: %zu\n", src, n);
+    printf("Expected (memcpy): \"%s\"\n", dest1);
+    printf("Actual (ft_memcpy): \"%s\"\n", dest2);
+
+    // 結果の比較
+    if (memcmp(dest1, dest2, n) == 0) {
+        printf("Result: PASS\n\n");
+    } else {
+        printf("Result: FAIL\n\n");
+    }
+}
+
 void	t_memcpy(void)
 {
+    printf("Prototyping:\nvoid *memcpy(void *dest, const void *src, size_t n);\n\n");
+
+    // テストケースを定義
+    run_memcpy_test("Test 1", "Hello, World!", 13);
+    run_memcpy_test("Test 2", "Test string", 11);
+    run_memcpy_test("Test 3", "Another test case", 18);
+    run_memcpy_test("Test 4", "Short", 5);
+    run_memcpy_test("Test 5", "Edge case: n = 0", 0);
+    run_memcpy_test("Test 6", "Edge case: empty string", 0);
+    run_memcpy_test("Test 7", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 26);
+    run_memcpy_test("Test 8", "1234567890", 10);
+    run_memcpy_test("Test 9", "Special characters !@#$%^&*()", 20);
+    run_memcpy_test("Test 10", "Final test string for memcpy", 26);
 
 }
 void	t_memmove(void)
@@ -340,7 +408,7 @@ int	main(void)
 //t_strlen();
 //t_bzero();
 //t_memset();
-//t_memcpy();
+t_memcpy();
 //t_memmove();
 //t_memchr();
 //t_memcmp();
@@ -352,7 +420,7 @@ int	main(void)
 //t_strlcat();
 //t_atoi();
 //t_calloc();
-t_strdup();
+//t_strdup();
 
 	return (0);
 }
