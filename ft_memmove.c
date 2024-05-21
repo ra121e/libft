@@ -6,11 +6,26 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:40:25 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/15 18:03:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 22:23:44 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file ft_memmove.c
+ * @brief
+ * @note copy memry in reverse to avoid overlap
+*/
+
 #include <stdio.h>
+
+/**
+ * @fn void *memmove(void *dest, const void *src, size_t n)
+ * @brief copy some memry area to other from the opposite
+ * @param[out] dest memory area to be copied to
+ * @param[in] src memory are to be copied
+ * @param[in] n how many bytes
+ * @return the pointer to start address of dest
+*/
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -39,45 +54,4 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		}
 	}
 	return (dest);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	int		i;
-	char	strsrc[] = "ZXYR";
-	char	strdest[] = "123456789";
-	char	strdest2[] = "xx";
-	int		intdest[] = {2147483647, 2147483647, 3, 4, 5};
-	char	*p;
-
-	printf("src string: %s\n", strsrc);
-	printf("src adress: %p\n", strsrc);
-	printf("dest string: %s\n", strdest);
-	printf("dest adress: %p\n", strdest);
-	printf("dest2 string: %s\n", strdest2);
-	printf("dest2 adress: %p\n", strdest2);
-	i = 0;
-	while (i < 5)
-	{
-		printf("%d ", (intdest[i]));
-		i++;
-	}
-	printf("\n");
-	printf("numbers adress: %p\n", intdest);
-	ft_memmove(strdest, strsrc, 3);
-	printf("dest string: %s\n", strdest);
-	ft_memmove(strdest2, strsrc, 3);
-	printf("dest2 string: %s\n", strdest2);
-	ft_memmove(intdest, strsrc, 3);
-	p = (char *)intdest;
-	i = 0;
-	while (i < 20)
-	{
-		printf("intdest string: %d\n", *(p + i));
-		i++;
-	}
-
-	return (0);
 }
