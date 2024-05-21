@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/20 16:50:32 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/21 13:42:20 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 			ft_memcmp.c ft_strncmp.c ft_strnstr.c \
 			ft_strlcpy.c ft_strlcat.c\
 			ft_atoi.c \
-			ft_calloc.c ft_strdup.c
+			ft_calloc.c ft_strdup.c \
+			ft_substr.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
