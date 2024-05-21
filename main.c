@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 13:26:40 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/21 14:46:27 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,76 +199,62 @@ void	t_memcpy(void)
     run_memcpy_test("Test 10", "Final test string for memcpy", 26);
 
 }
-// テストケースを実行する関数
-void run_memmove_test(const char *test_name, char *dest1, char *dest2, const char *src, size_t n) {
-    // オリジナル関数の結果1
-    void *orig_ret1 = memmove(dest1, src, n);
 
-    // 自作関数の結果1
-    void *ft_ret1 = ft_memmove(dest2, src, n);
-
-    // オリジナル関数の結果2
-    void *orig_ret2 = memmove(dest1, src, n);
-
-    // 自作関数の結果2
-    void *ft_ret2 = ft_memmove(dest2, src, n);
-
-    // 結果を出力
-    printf("Test Case: %s\n", test_name);
-    printf("Input src: \"%s\", n: %zu\n", src, n);
-    printf("Addresses (dest1, src): %p, %p\n", (void *)dest1, (void *)src);
-    printf("Expected (memmove): \"%s\" (Return address: %p)\n", dest1, orig_ret1);
-    printf("Actual (ft_memmove): \"%s\" (Return address: %p)\n", dest2, ft_ret1);
-    printf("Addresses (dest2, src): %p, %p\n", (void *)dest2, (void *)src);
-    printf("Expected (memmove): \"%s\" (Return address: %p)\n", dest1, orig_ret2);
-    printf("Actual (ft_memmove): \"%s\" (Return address: %p)\n", dest2, ft_ret2);
-
-    // 結果の比較
-    if (memcmp(dest1, dest2, n) == 0) {
-        printf("Result: PASS\n\n");
-    } else {
-        printf("Result: FAIL\n\n");
-    }
-}
 void	t_memmove(void)
 {
-    printf("Prototyping:\nvoid *memmove(void *dest, const void *src, size_t n);\n\n");
 
-    // テストケースを定義
-    char src[] = "ZXYR";
-    char dest[] = "123456789";
-    char dest2[] = "xx";
+    clearScreen();
+    printf("Function: void *ft_memmove(void *dest, const void *src, size_t n)\n");
+    printf("Description: The ft_memmove() function copies n bytes from memory area src to memory area dest. The memory areas may overlap.\n");
+    printf("Input: A pointer to the destination memory area, a pointer to the source memory area, and the number of bytes to copy\n");
+    printf("Output: A pointer to the destination memory area dest\n\n");
 
-    // テストケース1
-    run_memmove_test("Test 1", dest, dest2, src, 2);
+    // Test case 1: overlapping memory areas
+    char dst1[10] = "abcdefgh";
+    printf("Test Case 1: dest = \"abcdefgh\", src = dest + 2, n = 4\n");
+    printf("Before: dest = \"%s\"\n", dst1);
+    ft_memmove(dst1, dst1 + 2, 4);
+    printf("After: dest = \"%s\"\n\n", dst1);
 
-    // テストケース2
-    run_memmove_test("Test 2", dest, dest2, src, 3);
+    // Test case 2: non-overlapping memory areas
+    int dst2[5] = {1, 2, 3, 4, 5};
+    printf("Test Case 2: dest = {1, 2, 3, 4, 5}, src = dest + 1, n = 3\n");
+    printf("Before: dest = ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", dst2[i]);
+    }
+    printf("\n");
+    ft_memmove(dst2, dst2 + 1, 3 * sizeof(int));
+    printf("After: dest = ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", dst2[i]);
+    }
+    printf("\n\n");
 
-    // テストケース3
-    run_memmove_test("Test 3", dest, dest2, src, 4);
+    // Test case 3: NULL pointers
+    printf("Test Case 3: NULL pointers\n");
+    char *nullPtr = NULL;
+    printf("Attempting to move 0 bytes from NULL to NULL...\n");
+    void *result = ft_memmove(nullPtr, nullPtr, 0);
+    if (result == NULL) {
+        printf("After: Result is NULL as expected.\n\n");
+    } else {
+        printf("After: Unexpected non-NULL result!\n\n");
+    }
 
-    // テストケース4
-    run_memmove_test("Test 4", dest, dest2, src, 5);
-
-    // テストケース5
-    run_memmove_test("Test 5", dest, dest2, src, 6);
-
-    // テストケース6
-    run_memmove_test("Test 6", dest, dest2, src, 7);
-
-    // テストケース7
-    run_memmove_test("Test 7", dest, dest2, src, 8);
-
-    // テストケース8
-    run_memmove_test("Test 8", dest, dest2, src, 9);
-
-    // テストケース9
-    run_memmove_test("Test 9", dest, dest2, src, 10);
-
-    // テストケース10
-    run_memmove_test("Test 10", dest, dest2, src, 11);
-
+    // Test case 4: custom lengths
+    printf("Enter the length of the memory areas: ");
+    size_t n;
+    scanf("%zu", &n);
+    char customDst[100];
+    char customSrc[100];
+    printf("Enter the source string: ");
+    scanf(" %99[^\n]", customSrc);
+    printf("Enter the destination string: ");
+    scanf(" %99[^\n]", customDst);
+    printf("Before: dest = \"%s\"\n", customDst);
+    ft_memmove(customDst, customSrc, n);
+    printf("After: dest = \"%s\"\n\n", customDst);
 
 }
 
@@ -552,7 +538,92 @@ void	t_substr(void)
 	}
 }
 
+void uppercaseChar(unsigned int i, char *c) {
+	int k = i;
+	i = k;
+	*c = ft_toupper(*c);
+}
 
+void lowercaseChar(unsigned int i, char *c) {
+	int k = i;
+	i = k;
+		*c = ft_tolower(*c);
+}
+
+	void addOffset(unsigned int i, char *c) {
+		int k = i;
+		i = k;
+		*c += i;
+	}
+
+	void multiplyByIndex(unsigned int i, char *c) {
+		int k = i;
+		i = k;
+		*c = (*c - 'a') * i + 'a';
+	}
+
+void	t_striteri(void)
+{
+
+	clearScreen();
+	printf("Function: void ft_striteri(char *s, void (*f)(unsigned int, char *))\n");
+	printf("Description: The ft_striteri() function applies the function 'f' on each character of the string passed as argument, passing its index as the first argument. Each character is passed by address to 'f' to be modified if necessary.\n");
+	printf("Input: A pointer to a null-terminated string, and a pointer to a function that takes an unsigned integer index and a pointer to a character\n");
+	printf("Output: None (modifies the string in-place)\n\n");
+
+	char str1[] = "HELlo2";
+	printf("Test Case 1: s = \"HELlo2\", f = uppercaseChar\n");
+	printf("Expected Output: \"HELLO2\"\n");
+	printf("Before: %s\n", str1);
+	ft_striteri(str1, uppercaseChar);
+	printf("After: %s\n\n", str1);
+
+	char str2[] = "WORld1";
+	printf("Test Case 2: s = \"WORld1\", f = lowercaseChar\n");
+	printf("Expected Output: \"world1\"\n");
+	printf("Before: %s\n", str2);
+	ft_striteri(str2, lowercaseChar);
+	printf("After: %s\n\n", str2);
+
+	char str3[] = "012345";
+
+	printf("Test Case 3: s = \"012345\", f = addOffset (add index to character)\n");
+	printf("Expected Output: \"012345\"\n");
+	printf("Before: %s\n", str3);
+	ft_striteri(str3, addOffset);
+	printf("After: %s\n\n", str3);
+
+	char str4[] = "abcd";
+
+	printf("Test Case 4: s = \"abcd\", f = multiplyByIndex (multiply each character by its index)\n");
+	printf("Expected Output: \"adce\"\n");
+	printf("Before: %s\n", str4);
+	ft_striteri(str4, multiplyByIndex);
+	printf("After: %s\n\n", str4);
+
+	printf("Enter a string to modify: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	printf("Enter 1 to uppercase, 2 to lowercase, or 3 to add offset: ");
+	int choice;
+	scanf("%d", &choice);
+	printf("Before: %s\n", customStr);
+	switch (choice) {
+		case 1:
+			ft_striteri(customStr, uppercaseChar);
+			break;
+		case 2:
+			ft_striteri(customStr, lowercaseChar);
+			break;
+		case 3:
+			ft_striteri(customStr, addOffset);
+			break;
+		default:
+			printf("Invalid choice.\n");
+			break;
+	}
+	printf("After: %s\n\n", customStr);
+}
 int	main(void)
 {
 
@@ -577,6 +648,7 @@ int	main(void)
 //t_atoi();
 //t_calloc();
 //t_strdup();
-t_substr();
+//t_substr();
+t_striteri();
 	return (0);
 }
