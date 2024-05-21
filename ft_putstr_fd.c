@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:30:56 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 15:35:59 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/21 18:30:48 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void ft_putstr_fd(char *s, int fd)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		ft_putchar(s[i], fd);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
 }
