@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 19:59:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/20 23:37:07 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,76 @@ void	t_memcpy(void)
     run_memcpy_test("Test 10", "Final test string for memcpy", 26);
 
 }
+// テストケースを実行する関数
+void run_memmove_test(const char *test_name, char *dest1, char *dest2, const char *src, size_t n) {
+    // オリジナル関数の結果1
+    void *orig_ret1 = memmove(dest1, src, n);
+
+    // 自作関数の結果1
+    void *ft_ret1 = ft_memmove(dest2, src, n);
+
+    // オリジナル関数の結果2
+    void *orig_ret2 = memmove(dest1, src, n);
+
+    // 自作関数の結果2
+    void *ft_ret2 = ft_memmove(dest2, src, n);
+
+    // 結果を出力
+    printf("Test Case: %s\n", test_name);
+    printf("Input src: \"%s\", n: %zu\n", src, n);
+    printf("Addresses (dest1, src): %p, %p\n", (void *)dest1, (void *)src);
+    printf("Expected (memmove): \"%s\" (Return address: %p)\n", dest1, orig_ret1);
+    printf("Actual (ft_memmove): \"%s\" (Return address: %p)\n", dest2, ft_ret1);
+    printf("Addresses (dest2, src): %p, %p\n", (void *)dest2, (void *)src);
+    printf("Expected (memmove): \"%s\" (Return address: %p)\n", dest1, orig_ret2);
+    printf("Actual (ft_memmove): \"%s\" (Return address: %p)\n", dest2, ft_ret2);
+
+    // 結果の比較
+    if (memcmp(dest1, dest2, n) == 0) {
+        printf("Result: PASS\n\n");
+    } else {
+        printf("Result: FAIL\n\n");
+    }
+}
 void	t_memmove(void)
 {
+    printf("Prototyping:\nvoid *memmove(void *dest, const void *src, size_t n);\n\n");
+
+    // テストケースを定義
+    char src[] = "ZXYR";
+    char dest[] = "123456789";
+    char dest2[] = "xx";
+
+    // テストケース1
+    run_memmove_test("Test 1", dest, dest2, src, 2);
+
+    // テストケース2
+    run_memmove_test("Test 2", dest, dest2, src, 3);
+
+    // テストケース3
+    run_memmove_test("Test 3", dest, dest2, src, 4);
+
+    // テストケース4
+    run_memmove_test("Test 4", dest, dest2, src, 5);
+
+    // テストケース5
+    run_memmove_test("Test 5", dest, dest2, src, 6);
+
+    // テストケース6
+    run_memmove_test("Test 6", dest, dest2, src, 7);
+
+    // テストケース7
+    run_memmove_test("Test 7", dest, dest2, src, 8);
+
+    // テストケース8
+    run_memmove_test("Test 8", dest, dest2, src, 9);
+
+    // テストケース9
+    run_memmove_test("Test 9", dest, dest2, src, 10);
+
+    // テストケース10
+    run_memmove_test("Test 10", dest, dest2, src, 11);
+
 
 }
 
@@ -408,8 +476,8 @@ int	main(void)
 //t_strlen();
 //t_bzero();
 //t_memset();
-t_memcpy();
-//t_memmove();
+//t_memcpy();
+t_memmove();
 //t_memchr();
 //t_memcmp();
 //t_strchr();
