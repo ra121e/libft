@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 14:46:27 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/21 19:53:11 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <bsd/string.h>
+
+// for file operations
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "libft.h"
 
 // Helper function to clear the screen
@@ -624,6 +629,150 @@ void	t_striteri(void)
 	}
 	printf("After: %s\n\n", customStr);
 }
+
+void	t_putchar_fd(void)
+{
+	clearScreen();
+	printf("Function: void ft_putchar_fd(char c, int fd)\n");
+	printf("Description: The ft_putchar_fd() function writes the character c to the file descriptor fd.\n");
+	printf("Input: A character and a file descriptor\n");
+	printf("Output: The character is written to the specified file descriptor\n\n");
+
+	// Test Case 1: Writing to standard output (fd = 1)
+	printf("Test Case 1: Writing to standard output (fd = 1)\n");
+	printf("Expected Output: 'X' should be printed to the console\n");
+	ft_putchar_fd('X', 1);
+	printf("\n\n");
+
+	// Test Case 2: Writing to standard error (fd = 2)
+	printf("Test Case 2: Writing to standard error (fd = 2)\n");
+	printf("Expected Output: 'E' should be printed to the standard error stream\n");
+	ft_putchar_fd('E', 2);
+	printf("\n\n");
+
+	// Test Case 3: Writing to a file (fd = 3)
+	printf("Test Case 3: Writing to a file (fd = 3)\n");
+	printf("Enter a character to write to a file: ");
+	char customChar;
+	scanf(" %c", &customChar);
+	int fd = open("test_file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1) {
+		printf("Failed to open or create the file.\n");
+		return;
+	}
+	ft_putchar_fd(customChar, fd);
+	close(fd);
+	printf("Character written to the file 'test_file.txt'\n\n");
+}
+
+void	t_putendl_fd(void)
+{
+
+	clearScreen();
+	printf("Function: void ft_putendl_fd(char const *s, int fd)\n");
+	printf("Description: The ft_putendl_fd() function writes the null-terminated string s to the file descriptor fd, followed by a newline character.\n");
+	printf("Input: A pointer to a null-terminated string and a file descriptor\n");
+	printf("Output: The string is written to the specified file descriptor, followed by a newline character\n\n");
+
+	// Test Case 1: Writing to standard output (fd = 1)
+	printf("Test Case 1: Writing to standard output (fd = 1)\n");
+	printf("Expected Output: 'Hello, world!' should be printed to the console, followed by a newline\n");
+	ft_putendl_fd("Hello, world!", 1);
+	printf("\n");
+
+	// Test Case 2: Writing to standard error (fd = 2)
+	printf("Test Case 2: Writing to standard error (fd = 2)\n");
+	printf("Expected Output: 'Error message' should be printed to the standard error stream, followed by a newline\n");
+	ft_putendl_fd("Error message", 2);
+	printf("\n");
+
+	// Test Case 3: Writing to a file (fd = 3)
+	printf("Test Case 3: Writing to a file (fd = 3)\n");
+	printf("Enter a string to write to a file: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	int fd = open("test_file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1) {
+		printf("Failed to open or create the file.\n");
+		return;
+	}
+	ft_putendl_fd(customStr, fd);
+	close(fd);
+	printf("String written to the file 'test_file.txt', followed by a newline\n\n");
+}
+
+void	t_putnbr_fd(void)
+{
+
+	clearScreen();
+	printf("Function: void ft_putnbr_fd(int n, int fd)\n");
+	printf("Description: The ft_putnbr_fd() function writes the integer n to the file descriptor fd.\n");
+	printf("Input: An integer and a file descriptor\n");
+	printf("Output: The integer is written to the specified file descriptor\n\n");
+
+	// Test Case 1: Writing to standard output (fd = 1)
+	printf("Test Case 1: Writing to standard output (fd = 1)\n");
+	printf("Expected Output: '42' should be printed to the console\n");
+	ft_putnbr_fd(42, 1);
+	printf("\n\n");
+
+	// Test Case 2: Writing to standard error (fd = 2)
+	printf("Test Case 2: Writing to standard error (fd = 2)\n");
+	printf("Expected Output: '-123' should be printed to the standard error stream\n");
+	ft_putnbr_fd(-123, 2);
+	printf("\n\n");
+
+	// Test Case 3: Writing to a file (fd = 3)
+	printf("Test Case 3: Writing to a file (fd = 3)\n");
+	printf("Enter an integer to write to a file: ");
+	int customInt;
+	scanf("%d", &customInt);
+	int fd = open("test_file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		printf("Failed to open or create the file.\n");
+		return ;
+	}
+	ft_putnbr_fd(customInt, fd);
+	close(fd);
+	printf("Integer written to the file 'test_file.txt'\n\n");
+}
+
+void	t_putstr_fd(void)
+{
+	clearScreen();
+	printf("Function: void ft_putstr_fd(char const *s, int fd)\n");
+	printf("Description: The ft_putstr_fd() function writes the null-terminated string s to the file descriptor fd.\n");
+	printf("Input: A pointer to a null-terminated string and a file descriptor\n");
+	printf("Output: The string is written to the specified file descriptor\n\n");
+
+	// Test Case 1: Writing to standard output (fd = 1)
+	printf("Test Case 1: Writing to standard output (fd = 1)\n");
+	printf("Expected Output: 'Hello, world!' should be printed to the console\n");
+	ft_putstr_fd("Hello, world!", 1);
+	printf("\n\n");
+
+	// Test Case 2: Writing to standard error (fd = 2)
+	printf("Test Case 2: Writing to standard error (fd = 2)\n");
+	printf("Expected Output: 'Error message' should be printed to the standard error stream\n");
+	ft_putstr_fd("Error message", 2);
+	printf("\n\n");
+
+	// Test Case 3: Writing to a file (fd = 3)
+	printf("Test Case 3: Writing to a file (fd = 3)\n");
+	printf("Enter a string to write to a file: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	int fd = open("test_file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1) {
+		printf("Failed to open or create the file.\n");
+		return;
+	}
+	ft_putstr_fd(customStr, fd);
+	close(fd);
+	printf("String written to the file 'test_file.txt'\n\n");
+}
+
 int	main(void)
 {
 
@@ -649,6 +798,11 @@ int	main(void)
 //t_calloc();
 //t_strdup();
 //t_substr();
-t_striteri();
+//t_striteri();
+//t_putchar_fd();
+//t_putendl_fd();
+//t_putnbr_fd();
+//t_putstr_fd();
+
 	return (0);
 }
