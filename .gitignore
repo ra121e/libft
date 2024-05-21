@@ -8,3 +8,4 @@ main_copy.c
 *.a
 *.s
 test
+test_file.txt
