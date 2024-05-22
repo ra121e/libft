@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 20:01:39 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/21 23:22:54 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,41 +385,98 @@ void	t_atoi(void)
 {
 	// ft_atoi test
 
-	char	atoistr[] = "    +42";
-	char	atoistr2[] = "    -42";
-	char	atoistr3[] = "  ---42";
-	char	atoistr4[] = "  +++42";
-	char	atoistr5[] = "  feae435352";
-	char	atoistr6[] = "  2425dfafa";
-	char	atoistr7[] = "";
-	char	atoistr8[] = "21474836489876";
-	char	atoistr9[] ="-21474836498768";
+	clearScreen();
+	printf("Function: int ft_atoi(const char *str)\n");
+	printf("Description: The ft_atoi() function converts the initial portion of the string pointed to by str to int representation.\n");
+	printf("Input: A pointer to a null-terminated string\n");
+	printf("Output: The converted integral number\n\n");
 
-	printf("ft_atoi--------------------------------------------\n");
-	printf("ft_ get %s return %d\n", atoistr, ft_atoi(atoistr));
-	printf("origina get %s return %d\n", atoistr, atoi(atoistr));
-	printf("ft_ get %s return %d\n", atoistr2, ft_atoi(atoistr2));
-	printf("origina get %s return %d\n", atoistr2, atoi(atoistr2));
-	printf("ft_ get %s return %d\n", atoistr3, ft_atoi(atoistr3));
-	printf("origina get %s return %d\n", atoistr3, atoi(atoistr3));
-	printf("ft_ get %s return %d\n", atoistr4, ft_atoi(atoistr4));
-	printf("origina get %s return %d\n", atoistr4, atoi(atoistr4));
-	printf("ft_ get %s return %d\n", atoistr5, ft_atoi(atoistr5));
-	printf("origina get %s return %d\n", atoistr5, atoi(atoistr5));
-	printf("ft_ get %s return %d\n", atoistr6, ft_atoi(atoistr6));
-	printf("origina get %s return %d\n", atoistr6, atoi(atoistr6));
-	printf("ft_ get %s return %d\n", atoistr7, ft_atoi(atoistr7));
-	printf("origina get %s return %d\n", atoistr7, atoi(atoistr7));
-	printf("ft_ get %s return %d\n", atoistr8, ft_atoi(atoistr8));
-	printf("origina get %s return %d\n", atoistr8, atoi(atoistr8));
-	printf("ft_ get %s return %d\n", atoistr9, ft_atoi(atoistr9));
-	printf("origina get %s return %d\n", atoistr9, atoi(atoistr9));
-	printf("---------------------------------------------------\n");
+	char str1[] = "42";
+	printf("Test Case 1: str = \"42\"\n");
+	printf("Expected Output: 42\n");
+	printf("Result: %d\n\n", ft_atoi(str1));
+
+	char str2[] = "-2147483648";
+	printf("Test Case 2: str = \"-2147483648\"\n");
+	printf("Expected Output: -2147483648\n");
+	printf("Result: %d\n\n", ft_atoi(str2));
+
+	char str3[] = "   +456";
+	printf("Test Case 3: str = \"   +456\"\n");
+	printf("Expected Output: 456\n");
+	printf("Result: %d\n\n", ft_atoi(str3));
+
+	char str4[] = " +01a6";
+	printf("Test Case 4: str = \" +01a6\"\n");
+	printf("Expected Output: 1\n");
+	printf("Result: %d\n\n", ft_atoi(str4));
+
+	char str5[] = "a 1";
+	printf("Test Case 4: str = \"a 1\"\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_atoi(str5));
+
+	printf("Enter a custom string to convert: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	printf("Result: %d\n\n", ft_atoi(customStr));
 }
 
 void	t_calloc(void)
 {
 
+	clearScreen();
+	printf("Function: void *ft_calloc(size_t nmemb, size_t size)\n");
+	printf("Description: The ft_calloc() function allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory. The memory is set to zero.\n");
+	printf("Input: The number of elements to be allocated, and the size of each element\n");
+	printf("Output: A pointer to the allocated memory, or NULL if the request fails\n\n");
+
+	printf("Test Case 1: nmemb = 5, size = sizeof(int)\n");
+	int *ptr1 = (int *)ft_calloc(5, sizeof(int));
+	if (ptr1 != NULL) {
+		printf("Allocated memory (hex): ");
+		for (size_t i = 0; i < 5 * sizeof(int); i++) {
+			printf("%02X ", *((unsigned char *)ptr1 + i));
+		}
+		printf("\n");
+		free(ptr1);
+	} else {
+		printf("Memory allocation failed.\n");
+	}
+	printf("\n");
+
+	printf("Test Case 2: nmemb = 3, size = sizeof(char)\n");
+	char *ptr2 = (char *)ft_calloc(3, sizeof(char));
+	if (ptr2 != NULL) {
+		printf("Allocated memory (hex): ");
+		for (size_t i = 0; i < 3 * sizeof(char); i++) {
+			printf("%02X ", *((unsigned char *)ptr2 + i));
+		}
+		printf("\n");
+		free(ptr2);
+	} else {
+		printf("Memory allocation failed.\n");
+	}
+	printf("\n");
+
+	printf("Enter the number of elements to allocate: ");
+	size_t numElements;
+	scanf("%zu", &numElements);
+	printf("Enter the size of each element: ");
+	size_t elementSize;
+	scanf("%zu", &elementSize);
+	void *ptr3 = ft_calloc(numElements, elementSize);
+	if (ptr3 != NULL) {
+		printf("Allocated memory (hex): ");
+		for (size_t i = 0; i < numElements * elementSize; i++) {
+			printf("%02X ", *((unsigned char *)ptr3 + i));
+		}
+		printf("\n");
+		free(ptr3);
+	} else {
+		printf("Memory allocation failed.\n");
+	}
+	printf("\n");
 }
 
 
@@ -795,14 +852,14 @@ int	main(void)
 //t_strlcpy();
 //t_strlcat();
 //t_atoi();
-//t_calloc();
+t_calloc();
 //t_strdup();
 //t_substr();
 //t_striteri();
 //t_putchar_fd();
 //t_putendl_fd();
 //t_putnbr_fd();
-t_putstr_fd();
+//t_putstr_fd();
 
 	return (0);
 }
