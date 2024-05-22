@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 13:44:24 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 15:55:41 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,34 @@
  * @param[in] start the index of the first letter of extracting string
  * @param[in] len how many letters we extract
  * @return the pointer of the extracted string, which is the address of allocated by malloc
+ * @sa ft_strlcpy, ft_strlen
+ * @note
+	- case1: string is "" -> NULL
+	- case2: start is bigger than string length -> put '\0' in new memory and return the pointer
+	- length I want to trim is bigger than the rest of string -> take only the rest
 */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*ptr;
-	unsigned int	i;
+	size_t			len_s;
 
-	ptr = (char *)malloc(sizeof (char) * len + 1);
+	if (s == NULL)
+		return NULL;
+	len_s = ft_strlen(s);
+	if (start >= len_s)
+	{
+		ptr = malloc(sizeof (char) * 1);
+		if (ptr == NULL)
+			return (NULL);
+		ptr[0] = '\0';
+		return (ptr);
+	}
+	if (len > len_s - start)
+		len = len_s - start;
+	ptr = (char *)malloc(sizeof (char) * (len + 1));
 	if (ptr == NULL)
 		return (NULL);
-	i = 0;
-	while (i < len + 1)
-	{
-		ptr[i] = s[start + i];
-		i++;
-	}
+	ft_strlcpy(ptr, &s[start], len + 1);
 	return (ptr);
 }
