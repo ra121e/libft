@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 23:22:54 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 13:35:40 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,6 +274,55 @@ void	t_memcmp(void)
 void	t_strchr(void)
 {
 
+	clearScreen();
+	printf("Function: char *ft_strchr(const char *s, int c)\n");
+	printf("Description: The ft_strchr() function locates the first occurrence of c (converted to a char) in the string pointed to by s.\n");
+	printf("Input: A pointer to a null-terminated string, and an integer representing the character to search for\n");
+	printf("Output: A pointer to the located character, or NULL if the character does not appear in the string\n\n");
+
+	// Test case with string
+	char str1[] = "hello";
+	printf("Test Case 1: s = \"hello\", c = 'l'\n");
+	printf("Expected Output: A pointer to the first 'l' in \"hello\"\n");
+	char *result1 = ft_strchr(str1, 'l');
+	printf("Result: %s\n\n", result1 != NULL ? result1 : "NULL");
+	result1 = strchr(str1, 'l');
+	printf("Result: %s\n\n", result1 != NULL ? result1 : "NULL");
+
+	// Test case with string where character is not found
+	char str2[] = "world";
+	printf("Test Case 2: s = \"world\", c = 'x'\n");
+	printf("Expected Output: NULL\n");
+	char *result2 = ft_strchr(str2, 'x');
+	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
+	result2 = ft_strchr(str2, 'x');
+	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
+
+	// Test case with empty string
+	char emptyStr[] = "";
+	printf("Test Case 3: Empty string\n");
+	printf("Expected Output: NULL\n");
+	char *result3 = ft_strchr(emptyStr, 'a');
+	printf("Result: %s\n\n", result3 != NULL ? result3 : "NULL");
+	result3 = ft_strchr(emptyStr, 'a');
+	printf("Result: %s\n\n", result3 != NULL ? result3 : "NULL");
+
+	// Test case with NULL pointer
+	printf("Test Case 4: NULL pointer\n");
+	printf("Expected Output: NULL\n");
+	char *result4 = ft_strchr(NULL, 'a');
+	printf("Result: %s\n\n", result4 != NULL ? result4 : "NULL");
+	result4 = ft_strchr(NULL, 'a');
+	printf("Result: %s\n\n", result4 != NULL ? result4 : "NULL");
+
+	// Test case with special characters
+	char str3[] = "hello, world!";
+	printf("Test Case 5: s = \"hello, world!\", c = '!'\n");
+	printf("Expected Output: A pointer to the first '!' in the string\n");
+	char *result5 = ft_strchr(str3, '!');
+	printf("Result: %s\n\n", result5 != NULL ? result5 : "NULL");
+	result5 = ft_strchr(str3, '!');
+	printf("Result: %s\n\n", result5 != NULL ? result5 : "NULL");
 }
 
 void	t_strrchr(void)
@@ -817,7 +866,7 @@ void	t_putstr_fd(void)
 
 	// Test Case 3: Writing to a file (fd = 3)
 	printf("Test Case 3: Writing to a file (fd = 3)\n");
-	printf("Enter a string to write to a file: ");
+	printf("Enter a string to write to file: ");
 	char customStr[100];
 	scanf(" %99[^\n]", customStr);
 	int fd = open("test_file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -845,14 +894,14 @@ int	main(void)
 //t_memmove();
 //t_memchr();
 //t_memcmp();
-//t_strchr();
+t_strchr();
 //t_strrchr();
 //t_strnstr();
 //t_strncmp();
 //t_strlcpy();
 //t_strlcat();
 //t_atoi();
-t_calloc();
+//t_calloc();
 //t_strdup();
 //t_substr();
 //t_striteri();
