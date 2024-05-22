@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 16:39:06 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 20:22:51 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,47 +162,82 @@ void	t_memset(void)
 
 }
 
-// テストケースを実行する関数
-void run_memcpy_test(const char *test_name, const char *src, size_t n) {
-    char dest1[100] = {0};
-    char dest2[100] = {0};
 
-    // オリジナル関数の結果
-    memcpy(dest1, src, n);
+size_t custom_strcspn(const char *s, const char *reject) {
+    const char *p, *r;
+    size_t count = 0;
 
-    // 自作関数の結果
-    ft_memcpy(dest2, src, n);
-
-    // 結果を出力
-    printf("Test Case: %s\n", test_name);
-    printf("Input src: \"%s\", n: %zu\n", src, n);
-    printf("Expected (memcpy): \"%s\"\n", dest1);
-    printf("Actual (ft_memcpy): \"%s\"\n", dest2);
-
-    // 結果の比較
-    if (memcmp(dest1, dest2, n) == 0) {
-        printf("Result: PASS\n\n");
-    } else {
-        printf("Result: FAIL\n\n");
+    for (p = s; *p != '\0'; ++p) {
+        for (r = reject; *r != '\0'; ++r) {
+            if (*p == *r) {
+                return count;
+            }
+        }
+        ++count;
     }
+
+    return count;
 }
 
 void	t_memcpy(void)
 {
-    printf("Prototyping:\nvoid *memcpy(void *dest, const void *src, size_t n);\n\n");
+	clearScreen();
+	printf("Function: void *ft_memcpy(void *dst, const void *src, size_t n)\n");
+	printf("Description: The ft_memcpy() function copies n bytes from memory area src to memory area dst.\n");
+	printf("Input: A pointer to the destination memory area, a pointer to the source memory area, and the number of bytes to copy\n");
+	printf("Output: A pointer to the destination memory area dst\n\n");
 
-    // テストケースを定義
-    run_memcpy_test("Test 1", "Hello, World!", 13);
-    run_memcpy_test("Test 2", "Test string", 11);
-    run_memcpy_test("Test 3", "Another test case", 18);
-    run_memcpy_test("Test 4", "Short", 5);
-    run_memcpy_test("Test 5", "Edge case: n = 0", 0);
-    run_memcpy_test("Test 6", "Edge case: empty string", 0);
-    run_memcpy_test("Test 7", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 26);
-    run_memcpy_test("Test 8", "1234567890", 10);
-    run_memcpy_test("Test 9", "Special characters !@#$%^&*()", 20);
-    run_memcpy_test("Test 10", "Final test string for memcpy", 26);
+	// Test case 1: different data types
+	char dst1[10] = "";
+	char src1[] = "hello";
+	printf("Test Case 1: Copying characters\n");
+	printf("Before: dst = \"%s\"\n", dst1);
+	ft_memcpy(dst1, src1, ft_strlen(src1) + 1);
+	printf("After: dst = \"%s\"\nExpected: \"hello\"\n\n", dst1);
 
+	// Test case 2: NULL pointers
+	printf("Test Case 2: NULL pointers\n");
+	char *nullPtr = NULL;
+	ft_memcpy(nullPtr, nullPtr, 0);
+	printf("After: dst = NULL\nExpected: dst = NULL\n\n");
+
+	// Test case 3: overlapping memory areas
+	printf("Test Case 3: Overlapping memory areas\n");
+	char overlappingDst[] = "123456";
+	printf("Before: dst = \"%s\"\n", overlappingDst);
+	ft_memcpy(overlappingDst + 2, overlappingDst, 4);
+	printf("After: dst = \"%s\"\nExpected: \"12123456\"\n\n", overlappingDst);
+
+	// Test case 4: non-overlapping memory areas
+	printf("Test Case 4: Non-overlapping memory areas\n");
+	char nonOverlappingDst[] = "123456";
+	char nonOverlappingSrc[] = "abcdef";
+	printf("Before: dst = \"%s\", src = \"%s\"\n", nonOverlappingDst, nonOverlappingSrc);
+	ft_memcpy(nonOverlappingDst, nonOverlappingSrc, 4);
+	printf("After: dst = \"%s\"\nExpected: \"abcd56\"\n\n", nonOverlappingDst);
+
+	// Test case 5: custom lengths
+	printf("Test Case 5: Custom lengths\n");
+	printf("Enter the length of the memory areas: ");
+	size_t n;
+	scanf("%zu", &n);
+	char customDst[100] = {0};
+	char customSrc[100] = {0};
+	printf("Enter the source string: ");
+	if (scanf(" %99[^\n]", customSrc) == 1) {
+		customSrc[custom_strcspn(customSrc, "\n")] = '\0'; // Null-terminate the string
+	} else {
+		printf("Error reading source string\n");
+	}
+	printf("Enter the destination string: ");
+	if (scanf(" %99[^\n]", customDst) == 1) {
+		customDst[custom_strcspn(customDst, "\n")] = '\0'; // Null-terminate the string
+	} else {
+		printf("Error reading destination string\n");
+	}
+	printf("Before: dst = \"%s\"\n", customDst);
+	ft_memcpy(customDst, customSrc, n);
+	printf("After: dst = \"%s\"\nExpected: <Depends on input>\n\n", customDst);
 }
 
 void	t_memmove(void)
@@ -595,6 +630,91 @@ void	t_substr(void)
 
 }
 
+void	t_strtrim(void)
+{
+
+	clearScreen();
+	printf("Function: char *ft_strtrim(char const *s1, char const *set)\n");
+	printf("Description: The ft_strtrim() function allocates and returns a copy of 's1' with the characters specified in 'set' removed from the beginning and the end of the string.\n");
+	printf("Input: A pointer to a null-terminated string, and a pointer to a set of characters to trim\n");
+	printf("Output: A pointer to the newly allocated trimmed string, or NULL if the allocation fails\n\n");
+
+	char str1[] = "  hello  ";
+	char set1[] = " ";
+	printf("Test Case 1: s1 = \"  hello  \", set = \" \"\n");
+	printf("Expected Output: \"hello\"\n");
+	char *result1 = ft_strtrim(str1, set1);
+	if (result1 != NULL) {
+		printf("Result: %s\n\n", result1);
+		free(result1);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	char str2[] = "hello, world";
+	char set2[] = ",";
+	printf("Test Case 2: s1 = \"hello, world\", set = \",\"\n");
+	printf("Expected Output: \"hello, world\"\n");
+	char *result2 = ft_strtrim(str2, set2);
+	if (result2 != NULL) {
+		printf("Result: %s\n\n", result2);
+		free(result2);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	char str3[] = "   ";
+	char set3[] = " ";
+	printf("Test Case 3: s1 = \"   \", set = \" \"\n");
+	printf("Expected Output: \"\"\n");
+	char *result3 = ft_strtrim(str3, set3);
+	if (result3 != NULL) {
+		printf("Result: %s\n\n", result3);
+		free(result3);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	char str4[] = "abcdefghijk";
+	char set4[] = "abcdefghijk";
+	printf("Test Case 4: s1 = \"abcdefghijk\", set = \"abcdefghijk\"\n");
+	printf("Expected Output: \"\"\n");
+	char *result4 = ft_strtrim(str4, set4);
+	if (result4 != NULL) {
+		printf("Result: %s\n\n", result4);
+		free(result4);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	char str5[] = "   hello   ";
+	char set5[] = " ";
+	printf("Test Case 5: s1 = \"   hello   \", set = \" \"\n");
+	printf("Expected Output: \"hello\"\n");
+	char *result5 = ft_strtrim(str5, set5);
+	if (result5 != NULL) {
+		printf("Result: %s\n\n", result5);
+		free(result5);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	// User input case
+	printf("Enter a string S1 to trim: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	printf("Enter the set of characters to trim: ");
+	char customSet[100];
+	scanf(" %99[^\n]", customSet);
+	char *customResult = ft_strtrim(customStr, customSet);
+	if (customResult != NULL) {
+		printf("Result: %s\n\n", customResult);
+		free(customResult);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+}
+
 void uppercaseChar(unsigned int i, char *c) {
 	int k = i;
 	i = k;
@@ -849,7 +969,8 @@ int	main(void)
 //t_atoi();
 //t_calloc();
 //t_strdup();
-t_substr();
+//t_substr();
+t_strtrim();
 //t_striteri();
 //t_putchar_fd();
 //t_putendl_fd();
