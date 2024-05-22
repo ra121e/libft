@@ -6,26 +6,29 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:08:38 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/18 21:33:03 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/21 23:01:11 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	Convert a string to an integer
+/**
+ * @file ft_atoi.c
+ * @brief Convert a string to an integer
 	numbers on screen is ascii letters stored in char array
-	combine the numbers and convert it to number value
 */
 
 #include "libft.h"
 //int	ft_isdigit(int c);
 
-/*
-	get string by pointer and check each char by 3 stage rocket
+/**
+ * @fn int ft_atoi(const char *nptr)
+ * @brief combine the numbers and convert it to number value
+ * @param[in] nptr
+ * @return the value or 0 in case error
+ * @note get string by pointer and check each char by 3 stage rocket
 	1st stage ignore space
 	2nd stage check + or -
 	3rd stage get number and convert into a variable
 	finally put negative
-	return the value or 0 in case error
 */
 
 int		ft_isspace(char c)
