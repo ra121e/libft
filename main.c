@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 14:02:37 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 16:39:06 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -572,7 +572,7 @@ void test_ft_substr(char *str, unsigned int start, size_t len, char *expected)
     char *result = ft_substr(str, start, len);
     printf("ft_substr(\"%s\", %u, %lu)\n", str, start, len);
     printf("Expected: \"%s\"\n", expected);
-    printf("Result: \"%s\"\n", result ? result : "NULL");
+    printf("Result: \"%s\"\n", result ? result : result);
     if (result && strcmp(result, expected) == 0)
         printf("Test passed\n");
     else
