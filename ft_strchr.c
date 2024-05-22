@@ -6,16 +6,31 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:09:38 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/15 21:24:37 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 13:33:59 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+/**
+ * @file ft_strchr.c
+ * @brief to locate character in string
+*/
+
+#include "libft.h"
+
+/**
+ * @fn char	*ft_strchr(const char *s, int c)
+ * @brief to find a first letter in the text
+ * @param[in]	s string to be checked in
+ * @param[in]	c character (1 byte)
+ * @return pointer to the matched character or NULL
+*/
 
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
+	if (s == NULL)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -24,26 +39,4 @@ char	*ft_strchr(const char *s, int c)
 		i++;
 	}
 	return (NULL);
-}
-
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	str[] = "This is a 42 premise";
-	char	str2[] = "sjfqoejwjo4351";
-	char	c;
-
-	c = 'a';
-	printf("%s\n", str);
-	printf("%p\n", str);
-	printf("%s\n", str2);
-	printf("%p\n", str2);
-	printf("%p\n", ft_strchr(str, c));
-	printf("%p\n", ft_strchr(str2, c));
-	c = '\0';
-	printf("%p\n", ft_strchr(str, c));
-	return (0);
-
 }
