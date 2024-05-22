@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:33:18 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/20 20:33:55 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/23 00:22:36 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	const char	*s;
 	size_t		i;
 
+	if (dest == NULL || src == NULL)
+		return (NULL);
 	d = (char *)dest;
 	s = (const char *)src;
 	i = 0;
