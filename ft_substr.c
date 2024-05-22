@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 17:02:35 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 18:20:43 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (ptr == NULL)
 		return (NULL);
 	ft_memcpy(ptr, &s[start], len);
-	ptr[len + 1] = '\0';
+	ptr[len] = '\0';
 	return (ptr);
 }
