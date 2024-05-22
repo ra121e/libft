@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 18:20:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 22:17:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @param[in] start the index of the first letter of extracting string
  * @param[in] len how many letters we extract
  * @return the pointer of the extracted string, which is the address of allocated by malloc
- * @sa ft_strlcpy, ft_strlen
+ * @sa ft_memcpy, ft_strlen
  * @note
 	- case1: string is "" -> NULL
 	- case2: start is bigger than string length -> put '\0' in new memory and return the pointer
