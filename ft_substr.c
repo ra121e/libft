@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 15:55:41 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/22 17:02:35 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 	- case1: string is "" -> NULL
 	- case2: start is bigger than string length -> put '\0' in new memory and return the pointer
 	- length I want to trim is bigger than the rest of string -> take only the rest
+	- put '\0' at the end of ptr, which index is [len] because allocated memory size is len + 1
+	- subtracted string is ptr[0], ptr[1],,,ptr[len - 1]
 */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -37,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			len_s;
 
 	if (s == NULL)
-		return NULL;
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (start >= len_s)
 	{
@@ -52,6 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr = (char *)malloc(sizeof (char) * (len + 1));
 	if (ptr == NULL)
 		return (NULL);
-	ft_strlcpy(ptr, &s[start], len + 1);
+	ft_memcpy(ptr, &s[start], len);
+	ptr[len + 1] = '\0';
 	return (ptr);
 }
