@@ -9,3 +9,4 @@ main_copy.c
 *.s
 test
 test_file.txt
+main_tester.c
