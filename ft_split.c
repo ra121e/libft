@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 14:06:09 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/23 17:55:14 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ char	**ft_split(char const *s, char c)
 	size_t			i;
 	unsigned int	j;
 	size_t			word_count;
-	unsigned int	word_head;
-	size_t			len_word;
+	const char		*word_head;
+	size_t			word_len;
 
 	if (s == NULL)
 		return (NULL);
 	word_count = 0;
-	if (s[0] == c)
+	if (s[0] != c)
 		word_count = 1;
 	i = 1;
 	while (s[i] != '\0')
@@ -65,13 +65,14 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	while (i < word_count)
 	{
-		while (s[j] == c || s[j] != '\0')
+		while (s[j] == c && s[j] != '\0')
 			j++;
-		word_head = j;
-		len_word = 0;
-		while (s[j] != c || s[j] != '\0')
-			len_word++;
-		word[i] = ft_substr(s, word_head, len_word);
+		printf("index j: %d\n", j);
+		word_head = &s[j];
+		word_len = ft_strchr(word_head, c) - word_head;
+		printf("word_len: %ld\n", word_len);
+		word[i] = ft_substr(s, j, word_len);
+		j = j + word_len;
 		i++;
 	}
 	word[i] = NULL;
