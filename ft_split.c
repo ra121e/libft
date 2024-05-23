@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 17:55:14 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/23 19:07:25 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[j] == c && s[j] != '\0')
 			j++;
-		printf("index j: %d\n", j);
 		word_head = &s[j];
-		word_len = ft_strchr(word_head, c) - word_head;
-		printf("word_len: %ld\n", word_len);
+		if (ft_strchr(word_head, c) != NULL)
+			word_len = ft_strchr(word_head, c) - word_head;
+		else
+			word_len = ft_strlen(word_head);
 		word[i] = ft_substr(s, j, word_len);
 		j = j + word_len;
 		i++;
