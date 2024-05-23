@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 19:07:25 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/23 20:35:30 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c)
 			word_count++;
 		i++;
 	}
-	word = (char **)malloc(sizeof (char) * (word_count + 1));
+	word = (char **)malloc(sizeof (char *) * (word_count + 1));
 	if (word == NULL)
 		return (NULL);
 	i = 0;
