@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:08:38 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 23:01:11 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/23 08:00:22 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 
 /**
  * @fn int ft_atoi(const char *nptr)
- * @brief combine the numbers and convert it to number value
+ * @brief combine the number characters into number value
  * @param[in] nptr
  * @return the value or 0 in case error
+ * @sa ft_isdigit ft_isspace:inside the file
  * @note get string by pointer and check each char by 3 stage rocket
-	1st stage ignore space
-	2nd stage check + or -
-	3rd stage get number and convert into a variable
-	finally put negative
+	- 1st stage ignore space
+	- 2nd stage check + or -
+	- 3rd stage get number and convert into a variable
+	- finally put negative
 */
 
 int		ft_isspace(char c)
