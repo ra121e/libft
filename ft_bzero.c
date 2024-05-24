@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:31:59 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 12:18:52 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/24 12:31:19 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*ptr;
+	size_t			i;
+	unsigned char	*ptr;
 
-	if (n == 0)
-		return ;
-	ptr = (char *)s;
+	ptr = (unsigned char *)s;
 	i = 0;
 	while (i < n)
 	{
