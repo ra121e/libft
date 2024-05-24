@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:40:25 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 13:37:23 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/24 14:11:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,25 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*d;
-	const char	*s;
-	size_t		i;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
 	if (dest == NULL || src == NULL || n == 0)
 		return (NULL);
-	d = (char *)dest;
-	s = (const char *)src;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	if (d < s)
 	{
-		i = 0;
-		while (i < n)
-		{
+		i = -1;
+		while (++i < n)
 			*(d + i) = *(s + i);
-			i++;
-		}
 	}
 	else
 	{
-		i = 0;
-		while (i < n)
-		{
+		i = -1;
+		while (++i < n)
 			*(d + (n - 1) - i) = *(s + (n - 1) - i);
-			i++;
-		}
 	}
 	return (dest);
 }
