@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 13:58:39 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/24 08:31:06 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -841,13 +841,19 @@ void	t_split(void)
 	if (result1 != NULL) {
 		for (int i = 0; result1[i] != NULL; i++) {
 			printf("\"%s\" ", result1[i]);
+			printf("\"%p\" ", result1[i]);
 		}
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; result1[i] != NULL; i++) {
-			free(result1[i]);
+			printf("\"%p\" ", result1[i]);
+		printf("123hellilkdjfsdfo\n");
+		printf("%s\n", result1[0]);
+//			free(result1[0]);
+		printf("09876hellilkdjfsdfo\n");
 		}
-		free(result1);
+		printf("hellilkdjfsdfo\n");
+//		free(result1);
 	} else {
 		printf("NULL\n\n");
 	}
@@ -861,13 +867,14 @@ void	t_split(void)
 	if (result2 != NULL) {
 		for (int i = 0; result2[i] != NULL; i++) {
 			printf("\"%s\" ", result2[i]);
+			printf("\"%p\" ", result2);
 		}
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; result2[i] != NULL; i++) {
-			free(result2[i]);
+//			free(result2[i]);
 		}
-		free(result2);
+//		free(result2);
 	} else {
 		printf("NULL\n\n");
 	}
@@ -885,9 +892,9 @@ void	t_split(void)
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; result3[i] != NULL; i++) {
-			free(result3[i]);
+//			free(result3[i]);
 		}
-		free(result3);
+//		free(result3);
 	} else {
 		printf("NULL\n\n");
 	}
@@ -905,9 +912,9 @@ void	t_split(void)
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; result4[i] != NULL; i++) {
-			free(result4[i]);
+//			free(result4[i]);
 		}
-		free(result4);
+//		free(result4);
 	} else {
 		printf("NULL\n\n");
 	}
@@ -925,9 +932,9 @@ void	t_split(void)
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; result5[i] != NULL; i++) {
-			free(result5[i]);
+//			free(result5[i]);
 		}
-		free(result5);
+//		free(result5);
 	} else {
 		printf("NULL\n\n");
 }
@@ -949,13 +956,86 @@ void	t_split(void)
 		printf("\n\n");
 		// Free the allocated memory
 		for (int i = 0; customResult[i] != NULL; i++) {
-			free(customResult[i]);
+//			free(customResult[i]);
 		}
-		free(customResult);
+//		free(customResult);
 	} else {
 		printf("NULL\n\n");
 	}
 }
+
+void	t_itoa(void)
+{
+
+	clearScreen();
+	printf("Function: char *ft_itoa(int n)\n");
+	printf("Description: The ft_itoa() function allocates and returns a string representing the integer received as an argument.\n");
+	printf("Input: An integer value\n");
+	printf("Output: A pointer to the newly allocated string representing the integer, or NULL if the allocation fails\n\n");
+
+	printf("Test Case 1: n = 0\n");
+	printf("Expected Output: \"0\"\n");
+	char *result1 = ft_itoa('a');
+	if (result1 != NULL) {
+		printf("Result: %s\n\n", result1);
+		free(result1);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	printf("Test Case 2: n = 42\n");
+	printf("Expected Output: \"42\"\n");
+	char *result2 = ft_itoa(42);
+	if (result2 != NULL) {
+		printf("Result: %s\n\n", result2);
+		free(result2);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	printf("Test Case 3: n = -123\n");
+	printf("Expected Output: \"-123\"\n");
+	char *result3 = ft_itoa(-123);
+	if (result3 != NULL) {
+		printf("Result: %s\n\n", result3);
+		free(result3);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	printf("Test Case 4: n = 2147483647 (INT_MAX)\n");
+	printf("Expected Output: \"2147483647\"\n");
+	char *result4 = ft_itoa(2147483647);
+	if (result4 != NULL) {
+		printf("Result: %s\n\n", result4);
+		free(result4);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	printf("Test Case 5: n = -2147483648 (INT_MIN)\n");
+	printf("Expected Output: \"-2147483648\"\n");
+	char *result5 = ft_itoa(-2147483648);
+	if (result5 != NULL) {
+		printf("Result: %s\n\n", result5);
+		free(result5);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+	printf("Enter an integer to convert: ");
+	int customInt;
+	scanf("%d", &customInt);
+	char *result6 = ft_itoa(customInt);
+	if (result6 != NULL) {
+		printf("Result: %s\n\n", result6);
+		free(result6);
+	} else {
+		printf("Result: NULL\n\n");
+	}
+
+}
+
 void uppercaseChar(unsigned int i, char *c) {
 	int k = i;
 	i = k;
@@ -1213,7 +1293,8 @@ int	main(void)
 //t_substr();
 //t_strjoin();
 //t_strtrim();
-t_split();
+//t_split();
+t_itoa();
 //t_striteri();
 //t_putchar_fd();
 //t_putendl_fd();
