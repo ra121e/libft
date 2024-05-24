@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 19:10:14 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 14:31:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/24 14:34:10 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (p[i] == (unsigned char *)c)
+		if (p[i] == (unsigned char)c)
 		{
 			return ((void *)&p[i]);
 		}
