@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:09:38 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 15:38:55 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:52:38 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@
  * @param[in]	s string to be checked in
  * @param[in]	c character (1 byte) but type int...
  * @return pointer to the matched character or NULL by char pointer type
+ * @retval pointer : match letter
+ * @retval NULL : not found
+ * @retval pointer : NULL terminator
  * @attention to compare each letters type should be casted
+ * @note The terminating null byte is considered part of the string!!
+	in case of '\0', we have to check after while check
 */
 
 char	*ft_strchr(const char *s, int c)
@@ -37,5 +42,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)&s[i]);
 		i++;
 	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
 	return (NULL);
 }
