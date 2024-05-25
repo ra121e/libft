@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 20:35:30 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 22:14:20 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	word_count = 0;
-	if (s[0] != c)
+	if (s[0] != c && s[0] != '\0')
 		word_count = 1;
 	i = 1;
 	while (s[i] != '\0')
