@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:46:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 10:35:32 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 12:32:35 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
  * @retval	NULL : not found little
  * @sa ft_strncmp ft_strlen
  * @attention Dont do while nest. lets use previous function
- * @note index i can be max as "len - 1" because index starts 0
+ * @note index i must be stopped at "search area - word length plus 1 !!! "
+	but index starts from 0. so, the last letter is big[len - len_little]
 */
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
@@ -44,7 +45,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (len_big < len_little || len < len_little)
 		return (NULL);
 	i = 0;
-	while (i < len - 1 - len_little && big[i] != '\0')
+	while (i <= len - len_little && big[i] != '\0')
 	{
 		if (ft_strncmp(&big[i], little, len_little) == 0)
 			return ((char *)&big[i]);
