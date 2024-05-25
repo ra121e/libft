@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:41:49 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 19:53:11 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 20:04:14 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 	return (0);
 }
