@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:36:07 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 19:50:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 08:31:57 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483618)
+	if (n == -2147483648)
 	{
 		ft_putchar_fd('-', fd);
 		ft_putchar_fd('2', fd);
-		ft_putnbr_fd(147483648, fd);
+		n = 147483648;
 	}
 	else if (n < 0)
 	{
