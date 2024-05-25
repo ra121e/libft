@@ -6,80 +6,48 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:46:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/16 00:30:19 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 10:30:00 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+/**
+ * @file ft_strnstr.c
+ * @brief locate a substring in a string
+*/
+
+#include "libft.h"
+
+/**
+ * @fn char	*ft_strnstr(const char *big, const char *little, size_t len)
+ * @brief search for little string in big string within len size
+ * @param[in]	big string to be searched in
+ * @param[in]	little string to be searched for
+ * @param[in]	len max size to scarearch
+ * @return	pointer to the first character of the first occurrence
+ * @retval	big : little is empty
+ * @retval	NULL : not found little
+ * @sa ft_strncmp ft_strlen
+ * @attention Dont do while nest. lets use previous function
+*/
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t		i;
-	size_t		j;
-	void		*p;
+	size_t		len_little;
+	size_t		len_big;
 
+	len_little = ft_strlen(little);
+	len_big = ft_strlen(big);
+	if (little[0] == '\0')
+		return ((char *)big);
+	if (len_big < len_little || len < len_little)
+		return (NULL);
 	i = 0;
-	j = 0;
-	if (*little == '\0')
-		return ((void *)&big[0]);
-	while (i < len && big[i] != '\0')
+	while (i < len - 1 - len_little && big[i] != '\0')
 	{
-		if (big[i] == little[0])
-		{
-			p = (void *)&big[i];
-			while (i < len && big[i] == little[j] && little[j] != '\0')
-			{
-				i++;
-				j++;
-			}
-			if (little[j] == '\0')
-				return (p);
-			else
-				return (NULL);
-		}
+		if (ft_strncmp(&big[i], little, len_little) == 0)
+			return ((char *)&big[i]);
 		i++;
 	}
 	return (NULL);
-}
-
-
-#include <stdio.h>
-
-int	main(void)
-{
-	char	str[] = "This is a 42 premise";
-	char	str2[] = "";
-	char	str3[] = "is";
-	char	str4[] = "pren";
-	size_t	len;
-
-	printf("%s\n", str);
-	printf("%p\n", str);
-	printf("NULL %s\n", str2);
-	printf("Correct case: %s\n", str3);
-	printf("Incorrect case: %s\n", str4);
-	printf("\n");
-	printf("-----------------------------------------\n");
-	len = 20;
-	printf("case of len %ld\n", len);
-	printf("%s\n", str);
-	printf("%p\n", ft_strnstr(str, str2, len));
-	printf("%p\n", ft_strnstr(str, str3, len));
-	printf("%p\n", ft_strnstr(str, str4, len));
-	printf("\n");
-	printf("-----------------------------------------\n");
-	len = 10;
-	printf("case of len %ld\n", len);
-	printf("%p\n", ft_strnstr(str, str2, len));
-	printf("%p\n", ft_strnstr(str, str3, len));
-	printf("%p\n", ft_strnstr(str, str4, len));
-	printf("\n");
-	printf("-----------------------------------------\n");
-	len = 2;
-	printf("case of len %ld\n", len);
-	printf("%p\n", ft_strnstr(str, str2, len));
-	printf("%p\n", ft_strnstr(str, str3, len));
-	printf("%p\n", ft_strnstr(str, str4, len));
-
-	return (0);
 }
