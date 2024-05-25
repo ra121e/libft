@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:00:03 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/17 20:37:03 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 17:18:51 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	len;
 
 	len = ft_strlen(src);
+	if (size == 0)
+		return (len);
 	i = 0;
 	while (i < size - 1 && src[i] != '\0')
 	{
