@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:34:18 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 15:51:51 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 15:54:55 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
  * @return pointer to the occuerrence address
  * @attention in case the character to search with is '\0'
 */
-
 
 char	*ft_strrchr(const char *s, int c)
 {
