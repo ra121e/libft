@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:14:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 21:10:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 21:27:31 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ char	*ft_itoa(int n)
 		n = n * -1;
 		ptr[0] = '-';
 	}
-	while (digits >= 0 && n != 0)
-	{
-		ptr[digits] = '0' + (n % 10);
-		n = n / 10;
-		digits --;
-	}
 	ptr[digits] = '\0';
+	while (digits > 0 && n != 0)
+	{
+		ptr[digits - 1] = '0' + (n % 10);
+		n = n / 10;
+		digits--;
+	}
 	return (ptr);
 }
