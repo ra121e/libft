@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:46:11 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 10:30:00 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 10:35:32 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
  * @retval	NULL : not found little
  * @sa ft_strncmp ft_strlen
  * @attention Dont do while nest. lets use previous function
+ * @note index i can be max as "len - 1" because index starts 0
 */
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
