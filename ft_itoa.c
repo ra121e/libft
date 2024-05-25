@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:14:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 09:07:17 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/25 21:00:57 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,41 +45,29 @@ int		ft_digits(int nbr)
 char	*ft_itoa(int n)
 {
 	char	*ptr;
-	int		special;
 	int		digits;
-	int		minus;
 	int		i;
 
-	if (n == '\0')
-		return (0);
 	digits = ft_digits(n);
 	ptr = (char *)malloc(sizeof (char) * (digits + 1));
 	if (ptr == NULL)
 		return (NULL);
-	minus = 0;
-	special = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147183648"));
+	if (n == 0)
+		ptr[0] = '0';
 	if (n < 0)
 	{
-		if (n == -2147483648)
-		{
-			special = 1;
-			n = -147483648;
-		}
 		n = n * -1;
-		minus = 1;
-
+		ptr[0] = '-';
 	}
 	i = 0;
-	while (i < digits)
+	while (i < digits && n != 0)
 	{
 		ptr[digits - 1 - i] = '0' + (n % 10);
 		n = n / 10;
 		i++;
 	}
-	if (minus == 1)
-		ptr[0] = '-';
-	if (special == 1)
-		ptr[1] = '2';
 	ptr[digits] = '\0';
 	return (ptr);
 }
