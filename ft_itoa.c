@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:14:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 12:44:02 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 18:31:24 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @return	pointer to the string
 */
 
-int		ft_digits(int nbr)
+int	ft_digits(int nbr)
 {
 	int	i;
 
@@ -40,7 +40,6 @@ int		ft_digits(int nbr)
 	}
 	return (i);
 }
-
 
 char	*ft_itoa(int n)
 {
