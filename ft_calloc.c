@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:06:46 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 23:19:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 20:50:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 */
 
 #include "libft.h"
+#include <stdint.h>
 
 /**
  * @fn void *ft_calloc(size_t nmemb, size_t size)
@@ -31,6 +32,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
+	if (nmemb >= SIZE_MAX || size >= SIZE_MAX)
+		return (NULL);
+	if (nmemb > 2147483647 && size > 2147483647)
+		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
 		return (NULL);
