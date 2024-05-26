@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/22 22:17:10 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 19:03:44 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 
 /**
  * @fn char *ft_substr(char const *s, unsigned int start, size_t len)
- * @brief just get string by start index and length. No matching test or searching
+ * @brief get string by start index and length. No matching no searching
  * @param[in] s text to which I want to apply this function
  * @param[in] start the index of the first letter of extracting string
  * @param[in] len how many letters we extract
- * @return the pointer of the extracted string, which is the address of allocated by malloc
+ * @return pointer to the extracted string, which is allocated by malloc
  * @sa ft_memcpy, ft_strlen
  * @note
 	- case1: string is "" -> NULL
-	- case2: start is bigger than string length -> put '\0' in new memory and return the pointer
-	- length I want to trim is bigger than the rest of string -> take only the rest
-	- put '\0' at the end of ptr, which index is [len] because allocated memory size is len + 1
+	- case2: start bigger than string len -> put '\0'and return the pointer
+	- length is bigger than the rest of string -> take only the rest
+	- put '\0' at the end of ptr, index is [len] because mem size is len + 1
 	- subtracted string is ptr[0], ptr[1],,,ptr[len - 1]
 */
 
