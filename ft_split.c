@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 15:49:31 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 16:20:12 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	**ft_split(char const *s, char c)
 		else
 			word_len = ft_strlen(word_head);
 		word[i] = ft_substr(s, j, word_len);
-		if (word[i] == NULL)
+		if (!word[i])
 		{
 			ft_cleanmem(i, word);
 			return (NULL);
