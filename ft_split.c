@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 22:14:20 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 10:51:51 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,47 @@
 	- 3)ignore delimiter in small while loop and substr, repeat this set word_count times
 */
 
+
+
+size_t	ft_count_words(char const *str, char delimiter)
+{
+	size_t	i;
+	size_t	nbr_words;
+
+	nbr_words = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		while (str[i] == delimiter && str[i] != '\0')
+			i++;
+		if (str[i] != delimiter && str[i] != '\0')
+		{
+			nbr_words++;
+			while (str[i] != delimiter && str[i] != '\0')
+				i++;
+		}
+	}
+	return (nbr_words);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char			**word;
 	size_t			i;
 	unsigned int	j;
-	size_t			word_count;
 	const char		*word_head;
 	size_t			word_len;
+	size_t			nbr_words;
 
 	if (s == NULL)
 		return (NULL);
-	word_count = 0;
-	if (s[0] != c && s[0] != '\0')
-		word_count = 1;
-	i = 1;
-	while (s[i] != '\0')
-	{
-		if (s[i] != c && s[i - 1] == c)
-			word_count++;
-		i++;
-	}
-	word = (char **)malloc(sizeof (char *) * (word_count + 1));
+	nbr_words = ft_count_words(s, c);
+	word = (char **)malloc(sizeof (char *) * (nbr_words + 1));
 	if (word == NULL)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (i < word_count)
+	while (i < nbr_words)
 	{
 		while (s[j] == c && s[j] != '\0')
 			j++;
