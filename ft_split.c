@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 10:51:51 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 15:38:05 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ size_t	ft_count_words(char const *str, char delimiter)
 	return (nbr_words);
 }
 
+void	ft_cleanmem(unsigned int j, char **word)
+{
+	while (j > 0)
+	{
+		free(word[j - 1]);
+		j--;
+	}
+	free(word);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char			**word;
@@ -87,6 +97,11 @@ char	**ft_split(char const *s, char c)
 		else
 			word_len = ft_strlen(word_head);
 		word[i] = ft_substr(s, j, word_len);
+		if (word[i] == NULL)
+		{
+			ft_cleanmem(j, word);
+			return (NULL);
+		}
 		j = j + word_len;
 		i++;
 	}
