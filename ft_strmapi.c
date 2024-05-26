@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 12:31:41 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 13:00:22 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 18:53:29 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	len = ft_strlen(s);
 	ptr = (char *)malloc(sizeof (char) * (len + 1));
-	if(ptr == NULL)
+	if (ptr == NULL)
 		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
