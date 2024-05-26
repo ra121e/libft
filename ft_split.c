@@ -6,11 +6,9 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 17:08:43 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 17:24:25 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 /**
  * @file ft_split.c
@@ -27,17 +25,16 @@
  * @return	double pointer to first array which are storing substrings
  * @sa ft_substr ft_strlen ft_memcpy
  * @note ptr[0], ptr[1] are address, ptr[0][1], ptr[0][1]... are each letter
-	- to use ft_substr to extract string from text, it returns pointer of the substrings
+	- ft_substr to extract string from text returns pointer of the substrings
 	- we need array which store each address of the substrings
-	- then, malloc can make memory area for the array based on the size of pointer (8 bytes)
-	- malloc returns void pointer to the address of array which keeps adress of substrings
-	- There are 3 parts. 1)count word 2)Preparing array for address and store 3)extract strings
-	- 1)"::::42Singapore:student:::honda:::libft::::::" word_count++ happens after delimiteri
+	- malloc can make memory area based on the size of pointer (8 bytes)
+	- malloc returns void pointer to the address of the array
+	- Points. 1)count word 2)Preparing array 3)extract strings with free
+	- 1)"::42::singapore::sutudent:honda" word_count++ happens after delimitere
 	- 2)malloc
-	- 3)ignore delimiter in small while loop and substr, repeat this set word_count times
+	- 3)ignore delimiter in small while loop and substr
+	-  repeat this set word_count times
 */
-
-
 
 size_t	ft_count_words(char const *str, char delimiter)
 {
