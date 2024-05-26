@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:08:38 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/23 08:00:22 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 18:23:11 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@
 	- finally put negative
 */
 
-int		ft_isspace(char c)
+int	ft_isspace(char c)
 {
-	if (c == ' ' || c == '\f' || c == '\n' ||
+	if (c == ' ' || c == '\f' || c == '\n' || \
 		c == '\r' || c == '\t' || c == '\v')
 		return (1);
 	return (0);
 }
 
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	nbr;
 	int	sign;
