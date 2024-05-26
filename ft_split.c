@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 16:20:12 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 17:08:43 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,14 @@ void	ft_cleanmem(unsigned int i, char **word)
 		free(word[i - 1]);
 		i--;
 	}
-	free(word);
 }
 
-char	**ft_split(char const *s, char c)
+int		ft_setstr(char const *s, char c, size_t nbr_words, const char *word_head, char **word)
 {
-	char			**word;
-	size_t			i;
-	unsigned int	j;
-	const char		*word_head;
-	size_t			word_len;
-	size_t			nbr_words;
+	size_t	i;
+	size_t	j;
+	size_t	word_len;
 
-	if (s == NULL)
-		return (NULL);
-	nbr_words = ft_count_words(s, c);
-	word = (char **)malloc(sizeof (char *) * (nbr_words + 1));
-	if (word == NULL)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < nbr_words)
@@ -100,11 +90,32 @@ char	**ft_split(char const *s, char c)
 		if (!word[i])
 		{
 			ft_cleanmem(i, word);
-			return (NULL);
+			return (1);
 		}
 		j = j + word_len;
 		i++;
 	}
-	word[i] = NULL;
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char			**word;
+	const char		*word_head;
+	size_t			nbr_words;
+
+	if (s == NULL)
+		return (NULL);
+	nbr_words = ft_count_words(s, c);
+	word = (char **)malloc(sizeof (char *) * (nbr_words + 1));
+	if (word == NULL)
+		return (NULL);
+	word_head = s;
+	if (ft_setstr(s, c, nbr_words, word_head, word))
+	{
+		free(word);
+		return (NULL);
+	}
+	word[nbr_words] = NULL;
 	return (word);
 }
