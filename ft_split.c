@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:04:04 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 17:41:52 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 17:48:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	ft_setstr(char const *s, char c, size_t nbr_words, char **word)
 	size_t		word_len;
 	const char	*word_head;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while (i < nbr_words)
+	while (++i < nbr_words)
 	{
 		while (s[j] == c && s[j] != '\0')
 			j++;
@@ -84,13 +84,13 @@ int	ft_setstr(char const *s, char c, size_t nbr_words, char **word)
 			word_len = ft_strchr(word_head, c) - word_head;
 		else
 			word_len = ft_strlen(word_head);
-		if (!(word[i] = ft_substr(s, j, word_len)))
+		word[i] = ft_substr(s, j, word_len);
+		if (!(word[i]))
 		{
 			ft_cleanmem(i, word);
 			return (1);
 		}
 		j = j + word_len;
-		i++;
 	}
 	return (0);
 }
