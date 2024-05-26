@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 21:34:18 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/25 15:54:55 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 18:55:16 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 	char	*p;
+
 	p = NULL;
 	i = 0;
 	while (s[i] != '\0')
