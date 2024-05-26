@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:53:26 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/21 14:44:47 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/26 18:42:02 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * @note no return from f function, then no return no no no
  */
 
-void	ft_striteri(char *s, void(*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 
