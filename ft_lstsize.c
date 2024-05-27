@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:59:19 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/27 16:09:09 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/27 16:12:03 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_lstsize(t_list *lst)
 	int		i;
 
 	ptr = lst;
-	if (ptr ==NULL)
+	if (ptr == NULL)
 		return (0);
 	i = 1;
 	while (ptr->next != NULL)
