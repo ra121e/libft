@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/25 07:22:53 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/27 11:47:14 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,11 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 			ft_strmapi.c ft_striteri.c \
 			ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c
 
+SRCS_B	=	ft_lstnew.c
+
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
+
+OBJS_B	=	$(patsubst %.c,%.o,$(SRCS_B))
 
 CFLAGS	=	-Wall -Wextra -Werror
 
@@ -37,8 +41,14 @@ $(NAME): $(OBJS)
 $(OBJS): $(SRCS)
 		cc $(CFLAGS) -c $(SRCS)
 
+bonus: $(NAME) $(OBJS_B)
+		ar rc $(NAME) $(OBJS_B)
+
+$(OBJS_B): $(SRCS_B)
+		cc $(CFLAGS) -c $(SRCS_B)
+
 clean:
-		rm -f $(OBJS)
+		rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 		rm -f $(NAME)
