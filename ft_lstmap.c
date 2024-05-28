@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:35:42 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/28 20:37:14 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/28 22:17:57 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
  * @return Its head node which point the first node
  * @note Might be Exception of the rule, but not impossibe to say...
 	- Focusing on generating nodes, there is no link list yet
-	-
+	- revise 1: memory leak. put delete content in NULL check statement
+	- revise 2: seg fault. No put delete head in NULL check. lstclear did it
 */
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
@@ -44,7 +45,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		node = ft_lstnew(new_content);
 		if (node == NULL)
 		{
-			ft_lstdelone(head, del);
 			del(new_content);
 			ft_lstclear(&head, del);
 			return (NULL);
