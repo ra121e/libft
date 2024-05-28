@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:59:19 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/27 16:12:03 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/28 14:55:29 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 /**
  * @fn int	ft_lstsize(t_list *lst)
  * @brief
- * @param[in]	lst address of the first box, not the pointer of the list
+ * @param[in]	lst address of the first node, not the pointer of the list
  * @return the length of the list
+ * @note This is exception of the "Link List Rule"
+	- receive the address of the first node (not head pointer)
+	- no need any other
+	- of couse retuen number (can we use size_t???)
 */
 
 int	ft_lstsize(t_list *lst)
