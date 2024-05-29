@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 22:06:46 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 20:50:05 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/29 16:06:06 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 */
 
 #include "libft.h"
-#include <stdint.h>
 
 /**
  * @fn void *ft_calloc(size_t nmemb, size_t size)
@@ -25,17 +24,15 @@
  * @param[in] size is the number of units. how many block in address
  * @return void type pointer, because no need to specify the type
  * @note Ordinally array must be declared with static size
-	In case the size depends on the argument, dynamic memory needed
+	In case the size depends on the argument, dynamic memory neededi
+	if -number comes, it convert to big positive number bucasue of size_t
+	original calloc and malloc in this function return null. same behavior
 */
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 
-	if (nmemb >= SIZE_MAX || size >= SIZE_MAX)
-		return (NULL);
-	if (nmemb > 2147483647 && size > 2147483647)
-		return (NULL);
 	ptr = malloc(nmemb * size);
 	if (ptr == NULL)
 		return (NULL);
