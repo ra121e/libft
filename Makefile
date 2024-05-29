@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/28 15:31:21 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/29 12:27:59 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ SRCS	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c\
 			ft_strmapi.c ft_striteri.c \
 			ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c
 
-SRCS_B	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c \
-			ft_lstiter.c ft_lstmap.c
+SRCS_B	=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS	=	$(patsubst %.c,%.o,$(SRCS))
 
@@ -38,13 +38,13 @@ CFLAGS	=	-Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		ar rc $(NAME) $(OBJS)
+		ar rcs $(NAME) $(OBJS)
 
 $(OBJS): $(SRCS)
 		cc $(CFLAGS) -c $(SRCS)
 
 bonus: $(NAME) $(OBJS_B)
-		ar rc $(NAME) $(OBJS_B)
+		ar rcs $(NAME) $(OBJS_B)
 
 $(OBJS_B): $(SRCS_B)
 		cc $(CFLAGS) -c $(SRCS_B)
