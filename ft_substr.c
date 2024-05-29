@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:11:01 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/26 19:03:44 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/29 10:54:26 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@
  * @param[in] start the index of the first letter of extracting string
  * @param[in] len how many letters we extract
  * @return pointer to the extracted string, which is allocated by malloc
+ * @retval NULL: case1: string is ""
+ * @retval pointer to '\0': case2: start bigger than string len
  * @sa ft_memcpy, ft_strlen
- * @note
-	- case1: string is "" -> NULL
-	- case2: start bigger than string len -> put '\0'and return the pointer
-	- length is bigger than the rest of string -> take only the rest
+ * @note 1)basic 2) start exceed string 3)length from start exceed string
+	- 2) except condition. make 1 size memory area and put null terminator
+	- 3) adjust the length to the rest of string -> take only the rest
+	- 1) make destination area by malloc and copy strings by memcpy
 	- put '\0' at the end of ptr, index is [len] because mem size is len + 1
 	- subtracted string is ptr[0], ptr[1],,,ptr[len - 1]
 */
