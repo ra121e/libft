@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:33:18 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 23:40:14 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/29 22:42:04 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
  * @brief copy from memry to memry
 */
 
-#include <stdio.h>
+#include "libft.h"
 
 /**
  * @fn void *ft_memcpy(void *dest, const void *src, size_t n)

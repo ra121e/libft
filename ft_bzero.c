@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:31:59 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 12:31:19 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/29 22:40:42 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
  * @return none
  * @note void pointer s is casted to char to move by 1 byte
 */
-
-#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
