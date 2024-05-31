@@ -6,7 +6,7 @@
 #    By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 07:47:54 by athonda           #+#    #+#              #
-#    Updated: 2024/05/29 12:27:59 by athonda          ###   ########.fr        #
+#    Updated: 2024/05/31 16:49:28 by athonda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		ar rcs $(NAME) $(OBJS)
 
-$(OBJS): $(SRCS)
-		cc $(CFLAGS) -c $(SRCS)
+%.o: %.c
+		cc $(CFLAGS) -c $^ -o $@
 
 bonus: $(NAME) $(OBJS_B)
 		ar rcs $(NAME) $(OBJS_B)
