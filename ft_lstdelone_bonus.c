@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:13:36 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/28 11:27:52 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/31 18:01:30 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 		return ;
 	(*del)(lst->content);
 	free(lst);
+	lst = NULL;
 }
