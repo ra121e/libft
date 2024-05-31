@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 07:47:45 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/24 08:31:06 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/28 21:04:33 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <bsd/string.h>
+#include <limits.h>
+#include <stdint.h>
 
 // for file operations
 #include <fcntl.h>
@@ -301,10 +303,92 @@ void	t_memmove(void)
 void	t_memchr(void)
 {
 
+	clearScreen();
+	printf("Function: void *ft_memchr(const void *s, int c, size_t n)\n");
+	printf("Description: The ft_memchr() function scans the first n bytes of the memory area pointed to by s for the first instance of c.\n");
+	printf("Input: A pointer to the memory area, the value to search for, and the number of bytes to search\n");
+	printf("Output: A pointer to the matching byte, or NULL if the byte does not occur in the given memory area\n\n");
+
+	// Test case with string
+	char str1[] = "hello";
+	printf("Test Case 1: s = \"hello\", c = 'l', n = ft_strlen(s) + 1\n");
+	printf("Expected Output: A pointer to the first 'l' in \"hello\"\n");
+	void *result1 = ft_memchr(str1, 'l', ft_strlen(str1) + 1);
+	printf("Result: %s\n\n", result1 != NULL ? (char *)result1 : "NULL");
+
+	// Test case with array of integers
+	int arr[] = {1, 2, 3, 4, 5};
+	printf("Test Case 2: s = {1, 2, 3, 4, 5}, c = 3, n = sizeof(arr)\n");
+	printf("Expected Output: A pointer to the value 3 in the array\n");
+	void *result2 = ft_memchr(arr, 3, sizeof(arr));
+	printf("Result: %d\n\n", result2 != NULL ? *(int *)result2 : -1);
+
+	// Test case with empty string
+	char emptyStr[] = "";
+	printf("Test Case 3: Empty string\n");
+	printf("Expected Output: NULL\n");
+	void *result3 = ft_memchr(emptyStr, 'a', 1);
+	printf("Result: %s\n\n", result3 != NULL ? "Not NULL" : "NULL");
+
+	// Test case with NULL pointer
+	printf("Test Case 4: NULL pointer\n");
+	printf("Expected Output: NULL\n");
+	void *result4 = ft_memchr(NULL, 'a', 0);
+	printf("Result: %s\n\n", result4 != NULL ? "Not NULL" : "NULL");
+
+	// Test case with character not found
+	char str2[] = "hello";
+	printf("Test Case 5: Character not found\n");
+	printf("Expected Output: NULL\n");
+	void *result5 = ft_memchr(str2, 'z', ft_strlen(str2));
+	printf("Result: %s\n\n", result5 != NULL ? (char *)result5 : "NULL");
 }
 void	t_memcmp(void)
 {
 
+	clearScreen();
+	printf("Function: int ft_memcmp(void *dest, const void *src, size_t n)\n");
+	printf("Description: The ft_memcmp() function compares the first n bytes of the memory areas dest and src.\n");
+	printf("Input: Two pointers to memory areas, and the number of bytes to compare\n");
+	printf("Output: An integer less than, equal to, or greater than zero if dest is found, respectively, to be less than, to match, or be greater than src\n\n");
+
+	// Test cases with strings
+	char str1[] = "hello";
+	char str2[] = "hello";
+	printf("Test Case 1: dest = \"hello\", src = \"hello\", n = ft_strlen(str1) + 1\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_memcmp(str1, str2, ft_strlen(str1) + 1));
+
+	char str3[] = "hello";
+	char str4[] = "world";
+	printf("Test Case 2: dest = \"hello\", src = \"world\", n = 3\n");
+	printf("Expected Output: A value less than 0\n");
+	printf("Result: %d\n\n", ft_memcmp(str3, str4, 3));
+
+	// Test cases with arrays of integers
+	int arr1[] = {1, 2, 3, 4, 5};
+	int arr2[] = {1, 2, 3, 4, 5};
+	printf("Test Case 3: dest = {1, 2, 3, 4, 5}, src = {1, 2, 3, 4, 5}, n = sizeof(arr1)\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_memcmp(arr1, arr2, sizeof(arr1)));
+
+	// Test case with different data types (float)
+	float f1 = 3.14f;
+	float f2 = 3.14f;
+	printf("Test Case 4: dest = %f, src = %f, n = sizeof(float)\n", f1, f2);
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_memcmp(&f1, &f2, sizeof(float)));
+
+	// Test case with overlapping memory areas
+	int overlap[] = {1, 2, 3, 4, 5};
+	printf("Test Case 5: Overlapping memory areas\n");
+	printf("Expected Output: A value less than 0\n");
+	printf("Result: %d\n\n", ft_memcmp(overlap, overlap + 1, 4));
+
+	// Test case with NULL pointers
+	printf("Test Case 6: NULL pointers\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_memcmp(NULL, NULL, 0));
 }
 void	t_strchr(void)
 {
@@ -326,12 +410,14 @@ void	t_strchr(void)
 
 	// Test case with string where character is not found
 	char str2[] = "world";
-	printf("Test Case 2: s = \"world\", c = 'x'\n");
+	printf("Test Case 2: s = \"world\", c = '0'\n");
 	printf("Expected Output: NULL\n");
-	char *result2 = ft_strchr(str2, 'x');
+	char *result2 = ft_strchr(str2, '0');
 	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
-	result2 = ft_strchr(str2, 'x');
+	result2 = ft_strchr(str2, '0');
 	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
+	result2 = strchr(str2, '0');
+	printf("Result original: %s\n\n", result2 != NULL ? result2 : "NULL");
 
 	// Test case with empty string
 	char emptyStr[] = "";
@@ -363,60 +449,174 @@ void	t_strchr(void)
 void	t_strrchr(void)
 {
 
+	clearScreen();
+	printf("Function: char *ft_strrchr(const char *s, int c)\n");
+	printf("Description: The ft_strrchr() function locates the last occurrence of c (converted to a char) in the string pointed to by s.\n");
+	printf("Input: A pointer to a null-terminated string, and an integer representing the character to search for\n");
+	printf("Output: A pointer to the located character, or NULL if the character does not appear in the string\n\n");
+
+	// Test case with string
+	char str1[] = "hello";
+	printf("Test Case 1: s = \"hello\", c = 'l'\n");
+	printf("Expected Output: A pointer to the last 'l' in \"hello\"\n");
+	char *result1 = ft_strrchr(str1, 'l');
+	printf("Result: %s\n\n", result1 != NULL ? result1 : "NULL");
+
+	// Test case with string where character is not found
+	char str2[] = "world";
+	printf("Test Case 2: s = \"world\", c = 'x'\n");
+	printf("Expected Output: NULL\n");
+	char *result2 = ft_strrchr(str2, 'x');
+	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
+
+	// Test case with empty string
+	char emptyStr[] = "";
+	printf("Test Case 3: Empty string\n");
+	printf("Expected Output: NULL\n");
+	char *result3 = ft_strrchr(emptyStr, 'a');
+	printf("Result: %s\n\n", result3 != NULL ? result3 : "NULL");
+
+	// Test case with NULL pointer
+	printf("Test Case 4: NULL pointer\n");
+	printf("Expected Output: NULL\n");
+	char *result4 = ft_strrchr(NULL, 'a');
+	printf("Result: %s\n\n", result4 != NULL ? result4 : "NULL");
+
+	// Test case with special characters
+	char str3[] = "hello, world!";
+	printf("Test Case 5: s = \"hello, world!\", c = '!'\n");
+	printf("Expected Output: A pointer to the last '!' in the string\n");
+	char *result5 = ft_strrchr(str3, '!');
+	printf("Result: %s\n\n", result5 != NULL ? result5 : "NULL");
 }
 
 void	t_strnstr(void)
 {
 
+	clearScreen();
+	printf("Function: char *ft_strnstr(const char *str, const char *tofind, size_t len)\n");
+	printf("Description: The ft_strnstr() function locates the first occurrence of the null-terminated string tofind in the string str, where not more than len characters are searched.\n");
+	printf("Input: A pointer to a null-terminated string, a pointer to the string to search for, and the maximum number of bytes to search\n");
+	printf("Output: A pointer to the first character of the located substring, or NULL if the substring is not found\n\n");
+
+	char str1[] = "aaabcabcd";
+	char tofind1[] = "abcd";
+	printf("Test Case 1: str = \"aaabcabcd\", tofind = \"abcd\", len = 9\n");
+	printf("Expected Output: A pointer to the substring \"world\" in \"hello world\"\n");
+	char *result1 = ft_strnstr(str1, tofind1, 20);
+	printf("Result: %s\n\n", result1 != NULL ? result1 : "NULL");
+
+	char str2[] = "hello world";
+	char tofind2[] = "xyz";
+	printf("Test Case 2: str = \"hello world\", tofind = \"xyz\", len = ft_strlen(str2)\n");
+	printf("Expected Output: NULL\n");
+	char *result2 = ft_strnstr(str2, tofind2, ft_strlen(str2));
+	printf("Result: %s\n\n", result2 != NULL ? result2 : "NULL");
+
+	char str3[] = "hello world";
+	char tofind3[] = "hello";
+	printf("Test Case 3: str = \"hello world\", tofind = \"hello\", len = 5\n");
+	printf("Expected Output: A pointer to the substring \"hello\" in \"hello world\"\n");
+	char *result3 = ft_strnstr(str3, tofind3, 5);
+	printf("Result: %s\n\n", result3 != NULL ? result3 : "NULL");
+
+	// Additional test cases (edge cases)
+	printf("Enter a string to search: ");
+	char customStr[100];
+	scanf(" %99[^\n]", customStr);
+	printf("Enter a substring to find: ");
+	char customTofind[100];
+	scanf(" %99[^\n]", customTofind);
+	printf("Enter the maximum number of bytes to search: ");
+	size_t customLen;
+	scanf("%zu", &customLen);
+	char *result4 = ft_strnstr(customStr, customTofind, customLen);
+	printf("Result: %s\n\n", result4 != NULL ? result4 : "NULL");
 }
 
 void	t_strncmp(void)
 {
-	// ft_strncmp test
-	int		scn;
-	char	scstr1[] = "ABCDEFG";
-	char	scstr2[] = "ABCD";
+	clearScreen();
+	printf("Function: int ft_strncmp(const char *s1, const char *s2, size_t n)\n");
+	printf("Description: The ft_strncmp() function compares the first n bytes of the strings s1 and s2.\n");
+	printf("Input: Two pointers to null-terminated strings, and the number of bytes to compare\n");
+	printf("Output: An integer less than, equal to, or greater than zero if s1 is found, respectively, to be less than, to match, or be greater than s2\n\n");
 
-	printf("s1: %s\n", scstr1);
-	printf("s2: %s\n", scstr2);
-	scn = 2;
-	printf("case n = %d\n", scn);
-	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
-	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
-	scn = 5;
-	printf("case n = %d\n", scn);
-	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
-	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
-	scn = 9;
-	printf("case n = %d\n", scn);
-	printf("result of ft_ :%d\n", ft_strncmp(scstr1, scstr2, scn));
-	printf("result of original :%d\n", strncmp(scstr1, scstr2, scn));
-	printf("---------------------------------------------------\n");
+	// Test case with strings
+	char str1[] = "1234";
+	char str2[] = "1235";
+	printf("Test Case 1: s1 = \"hello\", s2 = \"hello\", n = 5\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_strncmp(str1, str2, 3));
 
+	// Test case with different strings
+	char str3[] = "hello";
+	char str4[] = "world";
+	printf("Test Case 2: s1 = \"hello\", s2 = \"world\", n = 3\n");
+	printf("Expected Output: A value less than 0\n");
+	printf("Result: %d\n\n", ft_strncmp(str3, str4, 3));
+
+	// Test case with identical strings but limited comparison
+	char str5[] = "abc";
+	char str6[] = "abc";
+	printf("Test Case 3: s1 = \"abc\", s2 = \"abc\", n = 2\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_strncmp(str5, str6, 2));
+
+	// Test case with empty strings
+	char emptyStr1[] = "";
+	char emptyStr2[] = "";
+	printf("Test Case 4: Empty strings\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_strncmp(emptyStr1, emptyStr2, 1));
+
+	// Test case with NULL pointers
+	printf("Test Case 5: NULL pointers\n");
+	printf("Expected Output: 0\n");
+	printf("Result: %d\n\n", ft_strncmp(NULL, NULL, 0));
+
+	// Additional custom test case
+	printf("Enter the first string: ");
+	char customStr1[100];
+	scanf(" %99[^\n]", customStr1);
+	printf("Enter the second string: ");
+	char customStr2[100];
+	scanf(" %99[^\n]", customStr2);
+	printf("Enter the number of bytes to compare: ");
+	size_t n;
+	scanf("%zu", &n);
+	printf("Result: %d\n\n", ft_strncmp(customStr1, customStr2, n));
 }
 
 void	t_strlcpy(void)
 {
 	// ft_strlcpy test
 	size_t	slcn;
-	char	slcstr1[] = "ABCDEFG";
-	char	slcstr2[] = "ABCD";
+	char	slcstr1[] = "AAAAAAAAAA";
+	char	slcstr2[] = "coucou";
+	char	slcstr3[] = "AAAAAAAAAA";
+	char	slcstr4[] = "coucou";
 
 	printf("dst: %s\n", slcstr1);
 	printf("src: %s\n", slcstr2);
+	slcn = 0;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("dst after ft_: %s\n", slcstr1);
+	printf("result of original :%zu\n", strlcpy(slcstr3, slcstr4, slcn));
+	printf("dst after original: %s\n", slcstr3);
+	slcn = 1;
+	printf("case n = %zu\n", slcn);
+	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
+	printf("dst after ft_: %s\n", slcstr1);
+	printf("result of original :%zu\n", strlcpy(slcstr3, slcstr4, slcn));
+	printf("dst after original: %s\n", slcstr3);
 	slcn = 2;
 	printf("case n = %zu\n", slcn);
 	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
 	printf("dst after ft_: %s\n", slcstr1);
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
-	slcn = 5;
-	printf("case n = %zu\n", slcn);
-	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
-	slcn = 9;
-	printf("case n = %zu\n", slcn);
-	printf("result of ft_ :%zu\n", ft_strlcpy(slcstr1, slcstr2, slcn));
-	printf("result of original :%zu\n", strlcpy(slcstr1, slcstr2, slcn));
+	printf("result of original :%zu\n", strlcpy(slcstr3, slcstr4, slcn));
+	printf("dst after original: %s\n", slcstr3);
 	printf("---------------------------------------------------\n");
 }
 
@@ -515,8 +715,8 @@ void	t_calloc(void)
 	printf("Input: The number of elements to be allocated, and the size of each element\n");
 	printf("Output: A pointer to the allocated memory, or NULL if the request fails\n\n");
 
-	printf("Test Case 1: nmemb = 5, size = sizeof(int)\n");
-	int *ptr1 = (int *)ft_calloc(5, sizeof(int));
+	printf("Test Case SIZE_MAX: nmemb = SIZA_MAX, size = SIZE_MAX\n");
+	int *ptr1 = (int *)ft_calloc(SIZE_MAX, SIZE_MAX);
 	if (ptr1 != NULL) {
 		printf("Allocated memory (hex): ");
 		for (size_t i = 0; i < 5 * sizeof(int); i++) {
@@ -529,8 +729,8 @@ void	t_calloc(void)
 	}
 	printf("\n");
 
-	printf("Test Case 2: nmemb = 3, size = sizeof(char)\n");
-	char *ptr2 = (char *)ft_calloc(3, sizeof(char));
+	printf("Test Case -5: nmemb = -5 , size = -5)\n");
+	char *ptr2 = (char *)ft_calloc(2147483653, 2147483653);
 	if (ptr2 != NULL) {
 		printf("Allocated memory (hex): ");
 		for (size_t i = 0; i < 3 * sizeof(char); i++) {
@@ -832,12 +1032,16 @@ void	t_split(void)
 	printf("Output: A pointer to the newly allocated array of strings, or NULL if the allocation fails\n\n");
 
 	// Test cases with known input and expected output
-	char str1[] = "hello,world,test";
-	char charset1[] = ",";
-	printf("Test Case 1: str = \"hello,world,test\", charset = \",\"\n");
-	printf("Expected Output: [\"hello\", \"world\", \"test\"]\n");
+	char str1[] = "hello!";
+	char charset1[] = " ";
+	//char str10[] = "\\0aa\\0bbb\\";
+	//char charset10[] = "\\0";
+	printf("Test Case 1: str = \"\\0aa\\0bbb\", charset1 = ""\n");
+	printf("Expected Output: []\n");
 	char **result1 = ft_split(str1, charset1[0]);
-	printf("Result: ");
+	printf("Result my_ft: ");
+	//char **result10 = split(str10, charset10[0]);
+	//printf("Result original: ");
 	if (result1 != NULL) {
 		for (int i = 0; result1[i] != NULL; i++) {
 			printf("\"%s\" ", result1[i]);
@@ -847,19 +1051,15 @@ void	t_split(void)
 		// Free the allocated memory
 		for (int i = 0; result1[i] != NULL; i++) {
 			printf("\"%p\" ", result1[i]);
-		printf("123hellilkdjfsdfo\n");
-		printf("%s\n", result1[0]);
 //			free(result1[0]);
-		printf("09876hellilkdjfsdfo\n");
 		}
-		printf("hellilkdjfsdfo\n");
 //		free(result1);
 	} else {
 		printf("NULL\n\n");
 	}
 
-	char str2[] = "hello world test";
-	char charset2[] = " ";
+	char str2[] = "";
+	char charset2[] = "a";
 	printf("Test Case 2: str = \"hello world test\", charset = \" \"\n");
 	printf("Expected Output: [\"hello\", \"world\", \"test\"]\n");
 	char **result2 = ft_split(str2, charset2[0]);
@@ -973,9 +1173,9 @@ void	t_itoa(void)
 	printf("Input: An integer value\n");
 	printf("Output: A pointer to the newly allocated string representing the integer, or NULL if the allocation fails\n\n");
 
-	printf("Test Case 1: n = 0\n");
-	printf("Expected Output: \"0\"\n");
-	char *result1 = ft_itoa('a');
+	printf("Test Case 1: n = -623\n");
+	printf("Expected Output: \"-623\"\n");
+	char *result1 = ft_itoa(-623);
 	if (result1 != NULL) {
 		printf("Result: %s\n\n", result1);
 		free(result1);
@@ -983,9 +1183,9 @@ void	t_itoa(void)
 		printf("Result: NULL\n\n");
 	}
 
-	printf("Test Case 2: n = 42\n");
-	printf("Expected Output: \"42\"\n");
-	char *result2 = ft_itoa(42);
+	printf("Test Case 2: n = 156\n");
+	printf("Expected Output: \"156\"\n");
+	char *result2 = ft_itoa(156);
 	if (result2 != NULL) {
 		printf("Result: %s\n\n", result2);
 		free(result2);
@@ -993,9 +1193,9 @@ void	t_itoa(void)
 		printf("Result: NULL\n\n");
 	}
 
-	printf("Test Case 3: n = -123\n");
-	printf("Expected Output: \"-123\"\n");
-	char *result3 = ft_itoa(-123);
+	printf("Test Case 3: n = -0\n");
+	printf("Expected Output: \"-0\"\n");
+	char *result3 = ft_itoa(-0);
 	if (result3 != NULL) {
 		printf("Result: %s\n\n", result3);
 		free(result3);
@@ -1003,9 +1203,9 @@ void	t_itoa(void)
 		printf("Result: NULL\n\n");
 	}
 
-	printf("Test Case 4: n = 2147483647 (INT_MAX)\n");
-	printf("Expected Output: \"2147483647\"\n");
-	char *result4 = ft_itoa(2147483647);
+	printf("Test Case 4: n = 0 (INT_MAX)\n");
+	printf("Expected Output: \"0\"\n");
+	char *result4 = ft_itoa(0);
 	if (result4 != NULL) {
 		printf("Result: %s\n\n", result4);
 		free(result4);
@@ -1212,7 +1412,7 @@ void	t_putnbr_fd(void)
 	// Test Case 2: Writing to standard error (fd = 2)
 	printf("Test Case 2: Writing to standard error (fd = 2)\n");
 	printf("Expected Output: '-123' should be printed to the standard error stream\n");
-	ft_putnbr_fd(-123, 2);
+	ft_putnbr_fd(-2147483648, 2);
 	printf("\n\n");
 
 	// Test Case 3: Writing to a file (fd = 3)
@@ -1265,6 +1465,413 @@ void	t_putstr_fd(void)
 	close(fd);
 	printf("String written to the file 'test_file.txt'\n\n");
 }
+int	t_lstnew(void)
+{
+    int num = 42;
+    char *str = "Hello, World!";
+    t_list *new_node1, *new_node2;
+
+    /* Create a new node with an integer content */
+    new_node1 = ft_lstnew(&num);
+    if (new_node1 == NULL)
+    {
+        printf("Failed to create new node.\n");
+        return 1;
+    }
+    printf("New node created with content: %d\n", *(int *)new_node1->content);
+
+    /* Create a new node with a string content */
+    new_node2 = ft_lstnew(str);
+    if (new_node2 == NULL)
+    {
+        printf("Failed to create new node.\n");
+        free(new_node1); /* Free the previously allocated memory */
+        return 1;
+    }
+    printf("New node created with content: %s\n", (char *)new_node2->content);
+
+    /* Free the allocated memory */
+    free(new_node1);
+    free(new_node2);
+	return (0);
+}
+
+void print_list(t_list *lst)
+{
+    t_list *current = lst;
+    while (current != NULL)
+    {
+        printf("%d ", *(int *)current->content);
+        current = current->next;
+    }
+    printf("\n");
+}
+
+int	t_lstadd_front(void)
+{
+	    t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Test 1: Add nodes to an initially empty list
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        t_list *new_node = ft_lstnew(&values[i]);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_front(&head, new_node);
+    }
+    printf("List after adding nodes: ");
+    print_list(head);
+
+    // Test 2: Add a node to a non-empty list
+    int new_value = 60;
+    t_list *new_node = ft_lstnew(&new_value);
+    if (new_node == NULL)
+    {
+        printf("Failed to create new node.\n");
+        return 1;
+    }
+    ft_lstadd_front(&head, new_node);
+    printf("List after adding a new node: ");
+    print_list(head);
+
+    // Test 3: Add a node to a NULL list
+    head = NULL;
+    new_value = 70;
+    new_node = ft_lstnew(&new_value);
+    if (new_node == NULL)
+    {
+        printf("Failed to create new node.\n");
+        return 1;
+    }
+    ft_lstadd_front(&head, new_node);
+    printf("List after adding a node to a NULL list: ");
+    print_list(head);
+
+    // Test 4: Add a NULL node
+    ft_lstadd_front(&head, NULL);
+    printf("List after adding a NULL node: ");
+    print_list(head);
+
+    // Free the allocated memory
+    while (head != NULL)
+    {
+        t_list *temp = head;
+        head = head->next;
+        free(temp);
+    }
+return (0);
+}
+
+int	t_lstsize(void)
+{
+	 t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Test 1: Count nodes in an initially empty list
+    int list_size = ft_lstsize(head);
+    printf("Size of the empty list: %d\n", list_size);
+
+    // Test 2: Add nodes and count them
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        t_list *new_node = ft_lstnew(&values[i]);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_front(&head, new_node);
+    }
+    list_size = ft_lstsize(head);
+    printf("Size of the list after adding nodes: %d\n", list_size);
+
+    // Test 3: Add a NULL node and count the list size
+    ft_lstadd_front(&head, NULL);
+    list_size = ft_lstsize(head);
+    printf("Size of the list after adding a NULL node: %d\n", list_size);
+
+    // Free the allocated memory
+    while (head != NULL)
+    {
+        t_list *temp = head;
+        head = head->next;
+        free(temp);
+    }
+
+    return 0;
+}
+
+int	t_lstlast(void)
+{
+   t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Test 1: Get the last node of an empty list
+    t_list *last_node = ft_lstlast(head);
+    printf("Last node of an empty list: %s\n", last_node == NULL ? "NULL" : "Not NULL");
+
+    // Test 2: Add nodes and get the last node
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        t_list *new_node = ft_lstnew(&values[i]);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_front(&head, new_node);
+    }
+    last_node = ft_lstlast(head);
+    printf("Last node of the list: %d\n", *(int *)last_node->content);
+
+    // Test 3: Add a NULL node and get the last node
+    ft_lstadd_front(&head, NULL);
+    last_node = ft_lstlast(head);
+    printf("Last node of the list after adding a NULL node: %s\n", last_node == NULL ? "NULL" : "Not NULL");
+
+    // Free the allocated memory
+    while (head != NULL)
+    {
+        t_list *temp = head;
+        head = head->next;
+        free(temp);
+    }
+
+    return 0;
+
+}
+
+int	t_lstadd_back(void)
+{
+	   t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Test 1: Add a node to an empty list
+    t_list *new_node = ft_lstnew(&values[0]);
+    if (new_node == NULL)
+    {
+        printf("Failed to create new node.\n");
+        return 1;
+    }
+    ft_lstadd_back(&head, new_node);
+    printf("List size after adding the first node: %d\n", ft_lstsize(head));
+
+    // Test 2: Add nodes to the end of the list
+    for (i = 1; i < sizeof(values) / sizeof(int); i++)
+    {
+        new_node = ft_lstnew(&values[i]);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_back(&head, new_node);
+    }
+    printf("List size after adding nodes: %d\n", ft_lstsize(head));
+    printf("Last node content: %d\n", *(int *)ft_lstlast(head)->content);
+
+    // Test 3: Add a NULL node
+    ft_lstadd_back(&head, NULL);
+    printf("List size after adding a NULL node: %d\n", ft_lstsize(head));
+
+    // Free the allocated memory
+    while (head != NULL)
+    {
+        t_list *temp = head;
+        head = head->next;
+        free(temp);
+    }
+
+    return 0;
+}
+
+void free_content(void *content)
+{
+    free(content);
+}
+
+int	t_lstdelone(void)
+{
+   t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Add nodes to the list
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        int *num = malloc(sizeof(int));
+        *num = values[i];
+        t_list *new_node = ft_lstnew(num);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_back(&head, new_node);
+    }
+    printf("List size after adding nodes: %d\n", ft_lstsize(head));
+
+    // Test 1: Delete the first node
+    t_list *node_to_delete = head;
+    head = node_to_delete->next;
+    ft_lstdelone(node_to_delete, free_content);
+    printf("List size after deleting the first node: %d\n", ft_lstsize(head));
+
+    // Test 2: Delete the last node
+    node_to_delete = ft_lstlast(head);
+    t_list *current = head;
+    while (current->next != node_to_delete)
+        current = current->next;
+    current->next = NULL;
+    ft_lstdelone(node_to_delete, free_content);
+    printf("List size after deleting the last node: %d\n", ft_lstsize(head));
+
+    // Test 3: Delete a node in the middle
+    node_to_delete = head->next;
+    head->next = node_to_delete->next;
+    ft_lstdelone(node_to_delete, free_content);
+    printf("List size after deleting a node in the middle: %d\n", ft_lstsize(head));
+
+    // Free the remaining allocated memory
+    while (head != NULL)
+    {
+        t_list *temp = head;
+        head = head->next;
+        ft_lstdelone(temp, free_content);
+    }
+
+    return 0;
+}
+
+int	t_lstclear(void)
+{
+	    t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+
+    // Add nodes to the list
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        int *num = malloc(sizeof(int));
+        *num = values[i];
+        t_list *new_node = ft_lstnew(num);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_back(&head, new_node);
+    }
+    printf("List size after adding nodes: %d\n", ft_lstsize(head));
+
+    // Test 1: Clear the entire list
+    ft_lstclear(&head, free_content);
+    printf("List size after clearing the entire list: %d\n", ft_lstsize(head));
+
+    // Test 2: Clear an empty list
+    ft_lstclear(&head, free_content);
+    printf("List size after clearing an empty list: %d\n", ft_lstsize(head));
+
+    // Test 3: Add nodes and clear the list with a NULL del function
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        int *num = malloc(sizeof(int));
+        *num = values[i];
+        t_list *new_node = ft_lstnew(num);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_back(&head, new_node);
+    }
+    ft_lstclear(&head, NULL);
+    printf("List size after clearing the list with a NULL del function: %d\n", ft_lstsize(head));
+
+    return 0;
+}
+
+
+
+void *double_content(void *content)
+{
+    int *new_content = malloc(sizeof(int));
+    if (new_content == NULL)
+        return NULL;
+    *new_content = *(int *)content * 2;
+    return new_content;
+}
+
+int	t_lstmap(void)
+{
+    t_list *head = NULL;
+    int values[] = {10, 20, 30, 40, 50};
+    size_t i;
+    t_list *new_list;
+
+    // Add nodes to the list
+    for (i = 0; i < sizeof(values) / sizeof(int); i++)
+    {
+        int *num = malloc(sizeof(int));
+        *num = values[i];
+        t_list *new_node = ft_lstnew(num);
+        if (new_node == NULL)
+        {
+            printf("Failed to create new node.\n");
+            return 1;
+        }
+        ft_lstadd_back(&head, new_node);
+    }
+    printf("Original list: ");
+    print_list(head);
+
+    // Test 1: Map the list with a function that doubles the content
+    new_list = ft_lstmap(head, double_content, free_content);
+    if (new_list == NULL)
+    {
+        printf("Failed to create new list.\n");
+        ft_lstclear(&head, free_content);
+        return 1;
+    }
+    printf("New list after mapping: ");
+    print_list(new_list);
+    ft_lstclear(&new_list, free_content);
+
+    // Test 2: Map an empty list
+    new_list = ft_lstmap(NULL, double_content, free_content);
+    if (new_list != NULL)
+    {
+        printf("Expected NULL, but got a non-NULL pointer.\n");
+        ft_lstclear(&new_list, free_content);
+        ft_lstclear(&head, free_content);
+        return 1;
+    }
+    printf("Mapping an empty list returns NULL.\n");
+
+    // Test 3: Map the list with a NULL function
+    new_list = ft_lstmap(head, NULL, free_content);
+    if (new_list != NULL)
+    {
+        printf("Expected NULL, but got a non-NULL pointer.\n");
+        ft_lstclear(&new_list, free_content);
+        ft_lstclear(&head, free_content);
+        return 1;
+    }
+    printf("Mapping with a NULL function returns NULL.\n");
+
+    ft_lstclear(&head, free_content);
+
+    return 0;
+
+}
 
 int	main(void)
 {
@@ -1294,12 +1901,19 @@ int	main(void)
 //t_strjoin();
 //t_strtrim();
 //t_split();
-t_itoa();
+//t_itoa();
 //t_striteri();
 //t_putchar_fd();
 //t_putendl_fd();
 //t_putnbr_fd();
 //t_putstr_fd();
-
+//t_lstnew();
+//t_lstadd_front();
+//t_lstsize();
+//t_lstlast();
+//t_lstadd_back();
+//t_lstdelone();
+//t_lstclear();
+t_lstmap();
 	return (0);
 }
