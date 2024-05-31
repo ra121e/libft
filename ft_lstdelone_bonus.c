@@ -6,7 +6,7 @@
 /*   By: athonda <athonda@student.42singapore.sg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 19:13:36 by athonda           #+#    #+#             */
-/*   Updated: 2024/05/31 18:01:30 by athonda          ###   ########.fr       */
+/*   Updated: 2024/05/31 18:21:08 by athonda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param[in]	lst the address of the node to be free
  * @param[in,out]	fnction (*del) applied to the node
  * @return none
- * @note reject: evacuate next address to temp. no need in this function
+ * @note reject: evacuate next address to temp. no need in this function.
 */
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
